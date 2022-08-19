@@ -12,7 +12,7 @@ export class EnviaEmailRecuperacaoSenhaController {
   async sendMail(req: Request, res: Response) {
     const { emailAluno, emailOrigem, assunto } = req.body;
 
-    this.enviaEmailRecuperacaoSenhaService.sendMail({
+    this.enviaEmailRecuperacaoSenhaService.execute({
       emailAluno,
       emailOrigem,
       assunto,

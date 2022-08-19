@@ -10,7 +10,7 @@ export class ListTurmaController {
   ) {}
 
   async listar(req: Request, res: Response) {
-    const turma = await this.listTurmaService.listar();
+    const turma = await this.listTurmaService.execute();
 
     res.send(turma);
   }

@@ -13,7 +13,7 @@ export class GetHistoricoByUserIdController {
   async listar(req: Request, res: Response) {
     const query = this.constroiQueryHistorico(req);
 
-    const historicos = await this.getHistoricoByUserIdService.listar(query);
+    const historicos = await this.getHistoricoByUserIdService.execute(query);
 
     res.send(historicos);
   }

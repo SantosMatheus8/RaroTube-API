@@ -12,7 +12,7 @@ export class DeleteVotoController {
   async remover(req: Request, res: Response) {
     const { comentarioId, usuarioId } = req.body;
 
-    await this.deleteVotoService.remover({ comentarioId, usuarioId });
+    await this.deleteVotoService.execute({ comentarioId, usuarioId });
     res.send();
   }
 }

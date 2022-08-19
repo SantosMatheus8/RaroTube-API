@@ -30,7 +30,7 @@ describe("UpdateVideoService", () => {
       logoDoCurso: "./upload/42380523yhr2304238f2",
     });
 
-    const video = await createVideoService.criar({
+    const video = await createVideoService.execute({
       turmaId: turma.id,
       nome: "Git/Git Flow",
       descricao:
@@ -39,14 +39,14 @@ describe("UpdateVideoService", () => {
       imagemBanner: "./upload/34jkrf2j3kfma04ds",
     });
 
-    await updateVideoService.atualizar(video.id, {
+    await updateVideoService.execute(video.id, {
       nome: "Nome Alterado",
       descricao: "Descrição Alterada",
       arquivoDoVideo: "./upload/",
       imagemBanner: "./upload/",
     });
 
-    expect(await getVideoByIdService.buscar(video.id)).toMatchObject({
+    expect(await getVideoByIdService.execute(video.id)).toMatchObject({
       nome: "Nome Alterado",
       descricao: "Descrição Alterada",
       arquivoDoVideo: "./upload/",

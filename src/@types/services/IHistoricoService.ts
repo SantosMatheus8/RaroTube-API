@@ -6,10 +6,10 @@ import {
 import { Historico } from "../../models/historico";
 
 export interface IAddHistoricoService {
-  adicionar({ videoId, alunoId }: HistoricoDTO): Promise<Historico>;
+  execute({ videoId, alunoId }: HistoricoDTO): Promise<Historico>;
 }
 export interface IGetHistoricoByUserIdService {
-  listar(
+  execute(
     queryHistoricoPorAluno: QueryHistoricoPorAluno
   ): Promise<RetornoListaHistoricos>;
 }

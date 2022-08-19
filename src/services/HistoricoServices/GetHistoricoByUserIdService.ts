@@ -18,7 +18,7 @@ export class GetHistoricoByUserIdService
     @Inject("AlunoRepository") private alunoRespository: IAlunoRepository
   ) {}
 
-  async listar(
+  async execute(
     queryHistoricoPorAluno: QueryHistoricoPorAluno
   ): Promise<RetornoListaHistoricos> {
     const { alunoId } = queryHistoricoPorAluno;

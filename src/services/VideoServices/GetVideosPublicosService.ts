@@ -12,7 +12,7 @@ export class GetVideosPublicosService implements IGetVideosPublicosService {
     @Inject("VideoRepository") private videoRepository: IVideoRepository
   ) {}
 
-  async listarVideosPublicos(
+  async execute(
     queryVideosPublicos: QueryVideosPublicos
   ): Promise<RetornoListaVideos> {
     const query = this.constroiQueryPadrao(queryVideosPublicos);

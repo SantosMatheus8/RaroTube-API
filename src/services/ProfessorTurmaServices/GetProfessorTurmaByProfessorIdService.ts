@@ -19,7 +19,7 @@ export class GetProfessorTurmaByProfessorIdService
     private professorRespository: IProfessorRepository
   ) {}
 
-  async listar(
+  async execute(
     queryProfessorTurma: QueryProfessorTurmas
   ): Promise<RetornoListaProfessorTurmas> {
     const { professorId } = queryProfessorTurma;

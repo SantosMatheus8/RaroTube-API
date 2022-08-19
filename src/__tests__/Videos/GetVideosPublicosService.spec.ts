@@ -27,7 +27,7 @@ describe("GetVideosPublicosService", () => {
       imagemBanner: "./upload/34jkrf2j3kfma04ds",
     });
 
-    const aux = await getVideosPublicosService.listarVideosPublicos({
+    const aux = await getVideosPublicosService.execute({
       page: 1,
       per: 4,
     });

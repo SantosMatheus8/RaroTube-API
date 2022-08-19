@@ -31,7 +31,7 @@ describe("DeleteVideoService", () => {
       logoDoCurso: "./upload/42380523yhr2304238f2",
     });
 
-    const videoCriado = await createVideoService.criar({
+    const videoCriado = await createVideoService.execute({
       turmaId: turma.id,
       nome: "Git/Git Flow",
       descricao:
@@ -40,14 +40,14 @@ describe("DeleteVideoService", () => {
       imagemBanner: "./upload/34jkrf2j3kfma04ds",
     });
 
-    await deleteVideoService.remover(videoCriado.id);
+    await deleteVideoService.execute(videoCriado.id);
 
     await expect(
-      getVideoByIdService.buscar(videoCriado.id)
+      getVideoByIdService.execute(videoCriado.id)
     ).rejects.toMatchObject(new Error("Video não encontrado"));
 
     const error = await deleteVideoService
-      .remover("123")
+      .execute("123")
       .catch((error) => error);
     expect(error).toBeInstanceOf(NotFoundError);
   });

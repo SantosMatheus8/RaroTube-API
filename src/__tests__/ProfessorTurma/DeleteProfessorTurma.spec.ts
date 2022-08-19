@@ -44,7 +44,7 @@ describe("CreateProfessorTurmaService", () => {
       turmaId: turma.id,
     });
 
-    await deleteProfessorTurmasService.remover({
+    await deleteProfessorTurmasService.execute({
       professorId: professor.id,
       turmaId: turma.id,
     });
@@ -65,7 +65,7 @@ describe("CreateProfessorTurmaService", () => {
     });
 
     const error = await deleteProfessorTurmasService
-      .remover({ professorId: "123", turmaId: turma.id })
+      .execute({ professorId: "123", turmaId: turma.id })
       .catch((error) => error);
     expect(error).toBeInstanceOf(NotFoundError);
   });

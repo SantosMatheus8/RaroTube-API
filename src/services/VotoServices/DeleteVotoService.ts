@@ -10,7 +10,7 @@ export class DeleteVotoService implements IDeleteVotoService {
     @Inject("VotoRepository") private votoRepository: IVotoRepository
   ) {}
 
-  async remover({ comentarioId, usuarioId }: DeleteVotoDTO): Promise<void> {
+  async execute({ comentarioId, usuarioId }: DeleteVotoDTO): Promise<void> {
     const voto = await this.votoRepository.buscaPorId({
       comentarioId,
       usuarioId,

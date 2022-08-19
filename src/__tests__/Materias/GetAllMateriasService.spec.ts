@@ -33,7 +33,7 @@ describe("GetAllMateriasService", () => {
       nome: "Matéria de GitLab",
     });
 
-    expect(await getAllMateriasService.listar()).toMatchObject([
+    expect(await getAllMateriasService.execute()).toMatchObject([
       { id: materia1.id, nome: "Matéria de Git", video: video },
       { id: materia2.id, nome: "Matéria de GitLab", video: video },
     ]);

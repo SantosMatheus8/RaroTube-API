@@ -13,7 +13,7 @@ export class GetProfessorTurmaByProfessorIdController {
   async listar(req: Request, res: Response) {
     const query = this.constroiQueryProfessorTurma(req);
 
-    const turmas = await this.getProfessorTurmaByProfessorIdService.listar(
+    const turmas = await this.getProfessorTurmaByProfessorIdService.execute(
       query
     );
 

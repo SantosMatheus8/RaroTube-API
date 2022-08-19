@@ -15,7 +15,7 @@ export class CreateMateriaService implements ICreateMateriaService {
     @Inject("ValidationService") private validationService: IValidationService
   ) {}
 
-  async criar({ videoId, nome }: MateriaDTO): Promise<Materia> {
+  async execute({ videoId, nome }: MateriaDTO): Promise<Materia> {
     const video = await this.videoRepository.buscar(videoId);
 
     if (!video) {

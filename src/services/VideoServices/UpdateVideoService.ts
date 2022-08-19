@@ -10,7 +10,7 @@ export class UpdateVideoService implements IUpdateVideoService {
     @Inject("VideoRepository") private videoRepository: IVideoRepository
   ) {}
 
-  async atualizar(
+  async execute(
     id: string,
     {
       turmaId,

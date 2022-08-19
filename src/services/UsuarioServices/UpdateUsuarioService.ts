@@ -13,7 +13,7 @@ export class UpdateUsuarioService implements IUpdateUsuarioService {
     @Inject("UsuarioRepository") private usuarioRepository: IUsuarioRepository
   ) {}
 
-  async atualizar(
+  async execute(
     id,
     { email, nome, fotoPerfil }: Partial<UpdateUsuarioDTO>
   ): Promise<RetornoCadastroUsuarioDTO> {

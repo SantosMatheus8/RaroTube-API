@@ -12,7 +12,7 @@ export class UpdateSenhaUsuarioService implements IUpdateSenhaUsuarioService {
     @Inject("UsuarioRepository") private usuarioRepository: IUsuarioRepository
   ) {}
 
-  async atualizar(
+  async execute(
     codigo: string,
     senha: string
   ): Promise<RetornoCadastroUsuarioDTO> {

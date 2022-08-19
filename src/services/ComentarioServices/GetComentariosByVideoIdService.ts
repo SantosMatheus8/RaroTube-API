@@ -15,7 +15,7 @@ export class GetComentariosByVideoIdService
     @Inject("VideoRepository") private videoRepository: IVideoRepository
   ) {}
 
-  async listar(videoId: string): Promise<Comentario[]> {
+  async execute(videoId: string): Promise<Comentario[]> {
     const video = await this.videoRepository.buscar(videoId);
 
     if (!video) {

@@ -7,10 +7,10 @@ export class DeleteUsuarioController {
   constructor(
     @Inject("DeleteUsuarioService")
     private deleteUsuarioService: IDeleteUsuarioService
-  ) { }
+  ) {}
 
   async remover(req: Request, res: Response) {
-    await this.deleteUsuarioService.remover(req.params.id);
+    await this.deleteUsuarioService.execute(req.params.id);
     res.status(204).send();
   }
 }

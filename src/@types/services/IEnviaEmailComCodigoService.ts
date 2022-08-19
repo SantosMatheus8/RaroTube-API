@@ -1,7 +1,7 @@
 import { SendMailDTO } from "../../clients/EmailClient";
 
 export interface IEnviaEmailComCodigoService {
-  sendMail({
+  execute({
     emailAluno,
     emailOrigem,
     assunto,

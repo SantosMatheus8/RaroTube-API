@@ -9,7 +9,7 @@ export class DeleteVideoService implements IDeleteVideoService {
     @Inject("VideoRepository") private videoRepository: IVideoRepository
   ) {}
 
-  async remover(id: string): Promise<void> {
+  async execute(id: string): Promise<void> {
     const video = await this.videoRepository.buscar(id);
 
     if (!video) {

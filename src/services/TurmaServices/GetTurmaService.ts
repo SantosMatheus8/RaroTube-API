@@ -7,9 +7,9 @@ import { NotFoundError } from "../../@types/errors/NotFoundError";
 export class GetTurmaService implements IGetTurmaService {
   constructor(
     @Inject("TurmaRepository") private turmaRepository: ITurmaRepository
-  ) { }
+  ) {}
 
-  async buscar(id: string) {
+  async execute(id: string) {
     const turma = await this.turmaRepository.buscar(id);
 
     if (!turma) {

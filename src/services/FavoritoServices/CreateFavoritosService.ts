@@ -18,7 +18,7 @@ export class CreateFavoritosService implements ICreateFavoritosService {
     @Inject("ValidationService") private validationService: IValidationService
   ) {}
 
-  async criar({ videoId, alunoId }: CreateFavoritoDTO): Promise<Favorito> {
+  async execute({ videoId, alunoId }: CreateFavoritoDTO): Promise<Favorito> {
     const favorito = new Favorito();
     Object.assign(favorito, { videoId, alunoId });
 

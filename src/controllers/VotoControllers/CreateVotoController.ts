@@ -11,7 +11,7 @@ export class CreateVotoController {
   async criar(req: Request, res: Response) {
     const { comentarioId, usuarioId, voto } = req.body;
 
-    const novoVoto = await this.createVotoService.criar({
+    const novoVoto = await this.createVotoService.execute({
       comentarioId,
       usuarioId,
       voto,

@@ -9,7 +9,7 @@ export class GetAllMateriasService implements IGetAllMateriasService {
     @Inject("MateriaRepository") private materiaRepository: IMateriaRepository
   ) {}
 
-  async listar(): Promise<Materia[]> {
+  async execute(): Promise<Materia[]> {
     return this.materiaRepository.listar();
   }
 }

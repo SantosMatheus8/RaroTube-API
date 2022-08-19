@@ -10,7 +10,7 @@ export class DeleteComentarioService implements IDeleteComentarioService {
     private comentarioRepository: IComentarioRepository
   ) {}
 
-  async remover(id: string): Promise<void> {
+  async execute(id: string): Promise<void> {
     const comentario = await this.comentarioRepository.buscar(id);
 
     if (!comentario) {

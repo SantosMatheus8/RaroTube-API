@@ -60,7 +60,7 @@ describe("CreateFavoritosService", () => {
       usuario,
     });
 
-    const favorito = await createFavoritoService.criar({
+    const favorito = await createFavoritoService.execute({
       videoId: video.id,
       alunoId: aluno.id,
     });
@@ -91,7 +91,7 @@ describe("CreateFavoritosService", () => {
     });
 
     const favorito = await createFavoritoService
-      .criar({
+      .execute({
         videoId: "321",
         alunoId: aluno.id,
       })
@@ -117,7 +117,7 @@ describe("CreateFavoritosService", () => {
     });
 
     const favorito = await createFavoritoService
-      .criar({
+      .execute({
         videoId: video.id,
         alunoId: "123",
       })

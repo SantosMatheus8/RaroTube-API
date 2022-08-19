@@ -9,7 +9,7 @@ export class GetAllVideosService implements IGetAllVideosService {
     @Inject("VideoRepository") private videoRepository: IVideoRepository
   ) {}
 
-  async listar(queryVideos: QueryVideos): Promise<RetornoListaVideos> {
+  async execute(queryVideos: QueryVideos): Promise<RetornoListaVideos> {
     const query = this.constroiQueryPadrao(queryVideos);
     const [videos, total] = await this.videoRepository.listar(query);
 

@@ -12,7 +12,7 @@ export class EnviaEmailComCodigoController {
   async sendMail(req: Request, res: Response) {
     const { emailAluno, emailOrigem, assunto, codigoAcesso } = req.body;
 
-    this.enviaEmailComCodigoService.sendMail({
+    this.enviaEmailComCodigoService.execute({
       emailAluno,
       emailOrigem,
       assunto,

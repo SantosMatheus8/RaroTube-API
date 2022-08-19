@@ -1,7 +1,7 @@
 import { SendMailRecuperacaoDTO } from "../../clients/EmailClient";
 
 export interface IEnviaEmailRecuperacaoSenhaService {
-  sendMail({
+  execute({
     emailAluno,
     emailOrigem,
     assunto,

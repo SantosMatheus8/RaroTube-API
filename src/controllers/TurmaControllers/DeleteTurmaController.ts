@@ -7,10 +7,10 @@ export class DeleteTurmaController {
   constructor(
     @Inject("DeleteTurmaService")
     private deleteTurmaService: IDeleteTurmaService
-  ) { }
+  ) {}
 
   async remove(request: Request, response: Response) {
-    await this.deleteTurmaService.remover(String(request.params.id));
+    await this.deleteTurmaService.execute(String(request.params.id));
     response.status(204).send();
   }
 }

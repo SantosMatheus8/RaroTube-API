@@ -13,7 +13,7 @@ export class UpdateTurmaController {
     const turmaId = request.params.id;
     const { nome, descricao, logoDoCurso } = request.body;
 
-    const turma = await this.updateTurmaService.atualizar(turmaId, {
+    const turma = await this.updateTurmaService.execute(turmaId, {
       nome,
       descricao,
       logoDoCurso,

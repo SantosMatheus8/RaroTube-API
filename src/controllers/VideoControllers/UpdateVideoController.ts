@@ -14,7 +14,7 @@ export class UpdateVideoController {
     const { turmaId, nome, descricao, arquivoDoVideo, imagemBanner } =
       request.body;
 
-    const video = await this.updateVideoService.atualizar(videoId, {
+    const video = await this.updateVideoService.execute(videoId, {
       turmaId,
       nome,
       descricao,

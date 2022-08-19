@@ -49,7 +49,7 @@ describe("UpdateComentarioService", () => {
       conteudo: "Ótimo vídeo",
     });
 
-    await updateComentarioService.atualizar(comentario.id, {
+    await updateComentarioService.execute(comentario.id, {
       conteudo: "Não gostei do vídeo",
     });
 

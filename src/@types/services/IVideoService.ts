@@ -8,7 +8,7 @@ import {
 } from "../dto/VideoDTO";
 
 export interface ICreateVideoService {
-  criar({
+  execute({
     turmaId,
     nome,
     descricao,
@@ -18,27 +18,27 @@ export interface ICreateVideoService {
 }
 
 export interface IDeleteVideoService {
-  remover(id: string): Promise<void>;
+  execute(id: string): Promise<void>;
 }
 
 export interface IGetAllVideosService {
-  listar(queryVideos: QueryVideos): Promise<RetornoListaVideos>;
+  execute(queryVideos: QueryVideos): Promise<RetornoListaVideos>;
 }
+
 export interface IGetVideosPublicosService {
-  listarVideosPublicos(
-    queryVideos: QueryVideosPublicos
-  ): Promise<RetornoListaVideos>;
+  execute(queryVideos: QueryVideosPublicos): Promise<RetornoListaVideos>;
 }
+
 export interface IGetVideosByTurmaIdService {
-  listar(queryVideos: QueryVideosPorTurma): Promise<RetornoListaVideos>;
+  execute(queryVideos: QueryVideosPorTurma): Promise<RetornoListaVideos>;
 }
 
 export interface IGetVideoByIdService {
-  buscar(id: string): Promise<Video>;
+  execute(id: string): Promise<Video>;
 }
 
 export interface IUpdateVideoService {
-  atualizar(
+  execute(
     id: string,
     {
       turmaId,

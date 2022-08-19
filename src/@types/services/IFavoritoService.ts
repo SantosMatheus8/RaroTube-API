@@ -6,15 +6,15 @@ import {
 } from "../dto/FavoritoDTO";
 
 export interface IGetFavoritosByUserIdService {
-  listar(
+  execute(
     queryFavoritosPorAluno: QueryFavoritosPorAluno
   ): Promise<RetornoListaFavoritos>;
 }
 
 export interface ICreateFavoritosService {
-  criar({ videoId, alunoId }: CreateFavoritoDTO): Promise<Favorito>;
+  execute({ videoId, alunoId }: CreateFavoritoDTO): Promise<Favorito>;
 }
 
 export interface IDeleteFavoritosService {
-  remover({ videoId, alunoId }: CreateFavoritoDTO): Promise<void>;
+  execute({ videoId, alunoId }: CreateFavoritoDTO): Promise<void>;
 }

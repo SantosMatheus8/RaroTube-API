@@ -13,7 +13,7 @@ export class CreateVideoService implements ICreateVideoService {
     @Inject("TurmaRepository") private turmaRepository: ITurmaRepository
   ) {}
 
-  async criar({
+  async execute({
     turmaId,
     nome,
     descricao,

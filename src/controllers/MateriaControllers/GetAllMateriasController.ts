@@ -10,7 +10,7 @@ export class GetAllMateriasController {
   ) {}
 
   async listar(req: Request, res: Response) {
-    const videos = await this.getAllMateriasService.listar();
+    const videos = await this.getAllMateriasService.execute();
 
     res.send(videos);
   }

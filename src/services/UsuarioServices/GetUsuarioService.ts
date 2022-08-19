@@ -9,7 +9,7 @@ export class GetUsuarioService implements IGetUsuarioService {
     @Inject("UsuarioRepository") private usuarioRepository: IUsuarioRepository
   ) {}
 
-  async buscar(id: string) {
+  async execute(id: string) {
     const usuario = await this.usuarioRepository.buscarPorId(id);
 
     if (!usuario) {

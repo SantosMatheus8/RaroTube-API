@@ -9,7 +9,7 @@ export class ListUsuarioService implements IListUsuarioService {
     @Inject("UsuarioRepository") private usuarioRepository: IUsuarioRepository
   ) {}
 
-  async listar(): Promise<Usuario[]> {
+  async execute(): Promise<Usuario[]> {
     return await this.usuarioRepository.listar();
   }
 }

@@ -10,7 +10,7 @@ export class GetVideoByIdController {
   ) {}
 
   async buscar(req: Request, res: Response) {
-    const video = await this.getVideoByIdService.buscar(req.params.id);
+    const video = await this.getVideoByIdService.execute(req.params.id);
 
     res.send(video);
   }

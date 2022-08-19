@@ -10,7 +10,7 @@ export class GetUsuarioController {
   ) {}
 
   async get(req: Request, res: Response) {
-    const usuario = await this.getUsuarioService.buscar(String(req.params.id));
+    const usuario = await this.getUsuarioService.execute(String(req.params.id));
 
     res.send(usuario);
   }

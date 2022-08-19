@@ -45,7 +45,7 @@ describe("CreateProfessorTurmaService", () => {
       logoDoCurso: "Image.png",
     });
 
-    const professorTurma = await createProfessorTurmaService.criar({
+    const professorTurma = await createProfessorTurmaService.execute({
       professorId: professor.id,
       turmaId: turma.id,
     });
@@ -64,7 +64,7 @@ describe("CreateProfessorTurmaService", () => {
     });
 
     const professorTurma = await createProfessorTurmaService
-      .criar({
+      .execute({
         professorId: "123",
         turmaId: turma.id,
       })
@@ -84,7 +84,7 @@ describe("CreateProfessorTurmaService", () => {
     const professor = await professorRepository.cadastrar({ usuario });
 
     const professorTurma = await createProfessorTurmaService
-      .criar({
+      .execute({
         professorId: professor.id,
         turmaId: "123",
       })

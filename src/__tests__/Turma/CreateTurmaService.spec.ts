@@ -14,7 +14,7 @@ describe("CreateTurma", () => {
       validationService
     );
 
-    const turma = await createTurma.criar({
+    const turma = await createTurma.execute({
       nome: "Turma de Back-end",
       descricao: "Aulas com intuito de ensinar back-end",
       logoDoCurso: "Image.png",

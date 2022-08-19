@@ -18,7 +18,7 @@ export class CreateComentarioService implements ICreateComentarioService {
     @Inject("ValidationService") private validationService: IValidationService
   ) {}
 
-  async criar({
+  async execute({
     videoId,
     usuarioId,
     conteudo,

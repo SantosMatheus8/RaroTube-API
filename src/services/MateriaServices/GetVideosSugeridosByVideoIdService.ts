@@ -7,19 +7,19 @@ import { NotFoundError } from "../../@types/errors/NotFoundError";
 
 @Service("GetVideosSugeridosByVideoIdService")
 export class GetVideosSugeridosByVideoIdService
-  implements IGetVideosSugeridosByVideoIdService {
+  implements IGetVideosSugeridosByVideoIdService
+{
   constructor(
     @Inject("MateriaRepository") private materiaRepository: IMateriaRepository,
     @Inject("VideoRepository") private videoRepository: IVideoRepository
-  ) { }
-  async listarRecomendados(videoId: string): Promise<Video[]> {
+  ) {}
+  async execute(videoId: string): Promise<Video[]> {
     const video = await this.videoRepository.buscar(videoId);
 
     if (!video) {
       throw new NotFoundError("O video informado não existe");
     }
     const materias = await this.materiaRepository.listarRecomendados(videoId);
-
 
     const videosSugeridos = materias.map((materia) => materia.video);
 
@@ -34,21 +34,27 @@ export class GetVideosSugeridosByVideoIdService
     for (let videoSugerido of videosSugeridosDoVideo) {
       if (videoSugerido.turma !== null && video.turma !== null) {
         if (videoSugerido.turma.id !== video.turma.id) {
-          videosSugeridosDoVideo.splice(videosSugeridosDoVideo.indexOf(videoSugerido), 1);
+          videosSugeridosDoVideo.splice(
+            videosSugeridosDoVideo.indexOf(videoSugerido),
+            1
+          );
         }
       }
     }
   }
   private retiraVideosRepetidos(videosSugeridosDoVideo: Video[]) {
-    const idDosVideos = videosSugeridosDoVideo.map(videoSugerido => {
+    const idDosVideos = videosSugeridosDoVideo.map((videoSugerido) => {
       return videoSugerido.id;
-    })
+    });
 
-    idDosVideos.forEach(id => {
-      const existeMesmoId = idDosVideos.indexOf(id, idDosVideos.indexOf(id) + 1);
+    idDosVideos.forEach((id) => {
+      const existeMesmoId = idDosVideos.indexOf(
+        id,
+        idDosVideos.indexOf(id) + 1
+      );
       if (existeMesmoId !== -1) {
         videosSugeridosDoVideo.splice(existeMesmoId, 1);
       }
-    })
+    });
   }
 }

@@ -14,13 +14,13 @@ describe("GetTurmaService", () => {
     );
     const getTurma = new GetTurmaService(turmaRepository);
 
-    const turma = await createTurma.criar({
+    const turma = await createTurma.execute({
       nome: "Turma de Back-end",
       descricao: "Aulas com intuito de ensinar back-end",
       logoDoCurso: "Image.png",
     });
 
-    const getTurmaById = await getTurma.buscar(turma.id);
+    const getTurmaById = await getTurma.execute(turma.id);
 
     expect(getTurmaById).toMatchObject(turma);
   });

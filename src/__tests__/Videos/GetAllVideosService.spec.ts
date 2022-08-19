@@ -38,7 +38,7 @@ describe("GetAllVideosService", () => {
       imagemBanner: "./upload/34jkrf2j3kfma04ds",
     });
 
-    const aux = await getAllVideosService.listar({ page: 1, per: 4 });
+    const aux = await getAllVideosService.execute({ page: 1, per: 4 });
 
     expect(aux.data[0]).toMatchObject(video1);
     expect(aux.data[1]).toMatchObject(video2);

@@ -50,14 +50,14 @@ describe("DeleteComentarioService", () => {
       conteudo: "Gostei do vídeo",
     });
 
-    await deleteComentarioService.remover(comentario.id);
+    await deleteComentarioService.execute(comentario.id);
 
     expect(await comentarioRepository.buscar(comentario.id)).toBe(undefined);
   });
 
   it("Deve não encontrar um comentário", async () => {
     const error = await deleteComentarioService
-      .remover("123")
+      .execute("123")
       .catch((error) => error);
     expect(error).toBeInstanceOf(NotFoundError);
   });

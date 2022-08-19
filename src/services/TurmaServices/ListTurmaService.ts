@@ -7,9 +7,9 @@ import { Turma } from "../../models/turma";
 export class ListTurmaService implements IListTurmaService {
   constructor(
     @Inject("TurmaRepository") private turmaRepository: ITurmaRepository
-  ) { }
+  ) {}
 
-  async listar(): Promise<Turma[]> {
+  async execute(): Promise<Turma[]> {
     return await this.turmaRepository.listar();
   }
 }

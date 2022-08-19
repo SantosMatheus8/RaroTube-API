@@ -26,7 +26,7 @@ describe("CreateProfessorService", () => {
   });
 
   it("Deve ser criado um novo professor", async () => {
-    const professor = await cadastrarProfessorService.cadastrar({
+    const professor = await cadastrarProfessorService.execute({
       email: "email@email.com",
       nome: "Matheus",
       fotoPerfil: "./upload/42380523yhr",
@@ -41,7 +41,7 @@ describe("CreateProfessorService", () => {
   });
 
   it("Deve retornar o erro que o email já esta cadastrado", async () => {
-    await cadastrarProfessorService.cadastrar({
+    await cadastrarProfessorService.execute({
       email: "email@email.com",
       nome: "Matheus",
       fotoPerfil: "./upload/42380523yhr",
@@ -49,7 +49,7 @@ describe("CreateProfessorService", () => {
     });
 
     const emailJaCadastrado = await cadastrarProfessorService
-      .cadastrar({
+      .execute({
         email: "email@email.com",
         nome: "Felipe",
         fotoPerfil: "./upload/42380523yhr",

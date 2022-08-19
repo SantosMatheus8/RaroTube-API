@@ -14,19 +14,19 @@ describe("ListTurmaService", () => {
       validationService
     );
 
-    const turma1 = await createTurma.criar({
+    const turma1 = await createTurma.execute({
       nome: "Turma de Back-end",
       descricao: "Aulas com intuito de ensinar back-end",
       logoDoCurso: "Image.png",
     });
 
-    const turma2 = await createTurma.criar({
+    const turma2 = await createTurma.execute({
       nome: "Front-end",
       descricao: "Aulas com intuito de ensinar front-end",
       logoDoCurso: "Image.png",
     });
 
-    const turma3 = await createTurma.criar({
+    const turma3 = await createTurma.execute({
       nome: "Testes",
       descricao: "Aulas com intuito de ensinar testes",
       logoDoCurso: "Image.png",
@@ -34,7 +34,7 @@ describe("ListTurmaService", () => {
 
     const turmas = [turma1, turma2, turma3];
 
-    const result = await listTurma.listar();
+    const result = await listTurma.execute();
     expect(result).toEqual(turmas);
   });
 });

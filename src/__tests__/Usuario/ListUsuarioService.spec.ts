@@ -26,7 +26,7 @@ describe("ListUsuarioService", () => {
       senha: "123456",
     });
 
-    const usuarios = await listUsuarioService.listar();
+    const usuarios = await listUsuarioService.execute();
 
     expect(usuarios[0]).toMatchObject(usuario1);
     expect(usuarios[1]).toMatchObject(usuario2);

@@ -20,7 +20,7 @@ describe("GetUsuarioService", () => {
       senha: "123456",
     });
 
-    const usuarioEncontrado = await getUsuarioService.buscar(usuario.id);
+    const usuarioEncontrado = await getUsuarioService.execute(usuario.id);
 
     expect(usuarioEncontrado).toMatchObject({
       id: usuarioEncontrado.id,
@@ -32,7 +32,7 @@ describe("GetUsuarioService", () => {
 
   it("Um usuário não deve ser encontrado", async () => {
     const usuarioEncontrado = await getUsuarioService
-      .buscar("123")
+      .execute("123")
       .catch((error) => error);
 
     expect(usuarioEncontrado).toBeInstanceOf(NotFoundError);

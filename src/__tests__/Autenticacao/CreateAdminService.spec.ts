@@ -26,7 +26,7 @@ describe("CreateAdminService", () => {
   });
 
   it("Deve ser criado um novo admin", async () => {
-    const admin = await cadastrarAdminService.cadastrar({
+    const admin = await cadastrarAdminService.execute({
       email: "email2@email.com",
       nome: "Matheus",
       fotoPerfil: "./upload/42380523yhr",
@@ -41,7 +41,7 @@ describe("CreateAdminService", () => {
   });
 
   it("Deve retornar o erro que o email já esta cadastrado", async () => {
-    await cadastrarAdminService.cadastrar({
+    await cadastrarAdminService.execute({
       email: "email@email.com",
       nome: "Matheus",
       fotoPerfil: "./upload/42380523yhr",
@@ -49,7 +49,7 @@ describe("CreateAdminService", () => {
     });
 
     const emailJaCadastrado = await cadastrarAdminService
-      .cadastrar({
+      .execute({
         email: "email@email.com",
         nome: "Felipe",
         fotoPerfil: "./upload/42380523yhr",

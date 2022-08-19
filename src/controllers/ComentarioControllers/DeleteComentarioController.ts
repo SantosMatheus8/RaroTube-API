@@ -7,10 +7,10 @@ export class DeleteComentarioController {
   constructor(
     @Inject("DeleteComentarioService")
     private deleteComentarioService: IDeleteVideoService
-  ) { }
+  ) {}
 
   async remover(req: Request, res: Response) {
-    await this.deleteComentarioService.remover(req.params.id);
+    await this.deleteComentarioService.execute(req.params.id);
 
     res.status(204).send();
   }

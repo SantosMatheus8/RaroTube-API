@@ -6,16 +6,16 @@ import {
 import { ProfessorTurma } from "../../models/professor_turma";
 
 export interface ICreateProfessorTurmaService {
-  criar({
+  execute({
     professorId,
     turmaId,
   }: CreateProfessorTurmaDTO): Promise<ProfessorTurma>;
 }
 export interface IDeleteProfessorTurmaService {
-  remover({ professorId, turmaId }: CreateProfessorTurmaDTO): Promise<void>;
+  execute({ professorId, turmaId }: CreateProfessorTurmaDTO): Promise<void>;
 }
 export interface IGetProfessorTurmaByProfessorIdService {
-  listar(
+  execute(
     queryProfessorTurmas: QueryProfessorTurmas
   ): Promise<RetornoListaProfessorTurmas>;
 }

@@ -13,7 +13,7 @@ export class DeleteProfessorTurmasService
     private professorTurmaRespository: IProfessorTurmaRepository
   ) {}
 
-  async remover({
+  async execute({
     professorId,
     turmaId,
   }: CreateProfessorTurmaDTO): Promise<void> {

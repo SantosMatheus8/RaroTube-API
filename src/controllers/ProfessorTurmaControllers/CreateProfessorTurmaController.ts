@@ -12,7 +12,7 @@ export class CreateProfessorTurmaController {
   async criar(req: Request, res: Response) {
     const { professorId, turmaId } = req.body;
 
-    const favorito = await this.createProfessorTurmaService.criar({
+    const favorito = await this.createProfessorTurmaService.execute({
       professorId,
       turmaId,
     });

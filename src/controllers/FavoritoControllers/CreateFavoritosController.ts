@@ -11,7 +11,7 @@ export class CreateFavoritosController {
 
   async criar(req: Request, res: Response) {
     const { videoId, alunoId } = req.body;
-    const favorito = await this.createFavoritosService.criar({
+    const favorito = await this.createFavoritosService.execute({
       videoId,
       alunoId,
     });

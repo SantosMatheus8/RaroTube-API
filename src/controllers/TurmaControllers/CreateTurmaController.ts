@@ -12,7 +12,7 @@ export class CreateTurmaController {
   async criar(request: Request, response: Response) {
     const { nome, descricao, logoDoCurso } = request.body;
 
-    const turma = await this.createTurmaService.criar({
+    const turma = await this.createTurmaService.execute({
       nome,
       descricao,
       logoDoCurso,

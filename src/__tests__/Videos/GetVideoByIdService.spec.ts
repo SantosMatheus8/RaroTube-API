@@ -31,7 +31,7 @@ describe("GetVideoByIdService", () => {
       logoDoCurso: "./upload/42380523yhr2304238f2",
     });
 
-    const videoCriado = await createVideoService.criar({
+    const videoCriado = await createVideoService.execute({
       turmaId: turma.id,
       nome: "Git/Git Flow",
       descricao:
@@ -40,7 +40,7 @@ describe("GetVideoByIdService", () => {
       imagemBanner: "./upload/34jkrf2j3kfma04ds",
     });
 
-    const videoEncontrado = await getVideoByIdService.buscar(videoCriado.id);
+    const videoEncontrado = await getVideoByIdService.execute(videoCriado.id);
 
     expect(videoEncontrado).toMatchObject({
       nome: "Git/Git Flow",

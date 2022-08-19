@@ -9,7 +9,7 @@ export class DeleteTurmaService implements IDeleteTurmaService {
     @Inject("TurmaRepository") private turmaRepository: ITurmaRepository
   ) {}
 
-  async remover(id: string): Promise<void> {
+  async execute(id: string): Promise<void> {
     const turma = await this.turmaRepository.buscar(id);
 
     if (!turma) {

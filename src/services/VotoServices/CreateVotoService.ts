@@ -15,7 +15,7 @@ export class CreateVotoService implements ICreateVotoService {
     private comentarioRepository: IComentarioRepository
   ) {}
 
-  async criar({
+  async execute({
     comentarioId,
     usuarioId,
     voto,

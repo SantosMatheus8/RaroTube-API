@@ -65,12 +65,12 @@ describe("GetHistoricoByUserIdService", () => {
 
     const aluno = await alunoRepository.cadastrar({ usuario, turma });
 
-    const historico1 = await addHistoricoService.adicionar({
+    const historico1 = await addHistoricoService.execute({
       videoId: video.id,
       alunoId: aluno.id,
     });
 
-    const historicos = await getHistoricoByUserIdService.listar({
+    const historicos = await getHistoricoByUserIdService.execute({
       alunoId: aluno.id,
       page: 1,
       per: 3,
@@ -82,7 +82,7 @@ describe("GetHistoricoByUserIdService", () => {
 
   it("Deve retornar o erro de aluno não encontrado", async () => {
     const historicos = await getHistoricoByUserIdService
-      .listar({
+      .execute({
         alunoId: "123",
         page: 1,
         per: 3,

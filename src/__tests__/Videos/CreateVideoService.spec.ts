@@ -25,7 +25,7 @@ describe("CreateVideoService", () => {
       logoDoCurso: "./upload/42380523yhr2304238f2",
     });
 
-    const video = await createVideoService.criar({
+    const video = await createVideoService.execute({
       turmaId: turma.id,
       nome: "Git/Git Flow",
       descricao:
@@ -46,7 +46,7 @@ describe("CreateVideoService", () => {
   });
 
   it("Deve ser criado um video sem turma id", async () => {
-    await createVideoService.criar({
+    await createVideoService.execute({
       nome: "Git/Git Flow",
       descricao:
         "O video aborda os principais comandos git e a importância de usar o gitflow",
@@ -57,7 +57,7 @@ describe("CreateVideoService", () => {
 
   it("Não deveria criar o video se não achar a turma", async () => {
     const error = await createVideoService
-      .criar({
+      .execute({
         turmaId: "123",
         nome: "Git/Git Flow",
         descricao:

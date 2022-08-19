@@ -58,14 +58,14 @@ describe("DeleteFavoritosService", () => {
     });
 
     expect(
-      await deleteFavoritoService.remover({
+      await deleteFavoritoService.execute({
         videoId: video.id,
         alunoId: aluno.id,
       })
     ).toBe(undefined);
 
     const error = await deleteFavoritoService
-      .remover({ videoId: "123", alunoId: "123" })
+      .execute({ videoId: "123", alunoId: "123" })
       .catch((error) => error);
     expect(error).toBeInstanceOf(NotFoundError);
   });

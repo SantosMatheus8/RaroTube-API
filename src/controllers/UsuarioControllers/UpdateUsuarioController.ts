@@ -13,7 +13,7 @@ export class UpdateUsuarioController {
     const usuarioId = request.params.id;
     const { email, nome, fotoPerfil } = request.body;
 
-    const usuario = await this.updateUsuarioService.atualizar(usuarioId, {
+    const usuario = await this.updateUsuarioService.execute(usuarioId, {
       email,
       nome,
       fotoPerfil,

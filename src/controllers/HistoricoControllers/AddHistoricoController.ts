@@ -12,7 +12,7 @@ export class AddHistoricoController {
   async adicionar(req: Request, res: Response) {
     const { videoId, alunoId } = req.body;
 
-    const historico = await this.addHistoricoService.adicionar({
+    const historico = await this.addHistoricoService.execute({
       videoId,
       alunoId,
     });

@@ -15,15 +15,15 @@ describe("DeleteTurmaService", () => {
     );
     const deleteTurma = new DeleteTurmaService(fakeTurmaRepository);
 
-    const turma = await createTurma.criar({
+    const turma = await createTurma.execute({
       nome: "Turma de Back-end",
       descricao: "Aulas com intuito de ensinar back-end",
       logoDoCurso: "Image.png",
     });
 
-    await deleteTurma.remover(turma.id);
+    await deleteTurma.execute(turma.id);
 
-    const error = await deleteTurma.remover("alo123").catch((error) => error);
+    const error = await deleteTurma.execute("alo123").catch((error) => error);
     expect(error).toBeInstanceOf(NotFoundError);
     expect(turma).toBeUndefined;
   });

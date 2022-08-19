@@ -6,7 +6,7 @@ import {
 } from "../dto/UsuarioDTO";
 
 export interface ICreateUsuarioService {
-  cadastrar({
+  execute({
     email,
     nome,
     fotoPerfil,
@@ -15,27 +15,24 @@ export interface ICreateUsuarioService {
 }
 
 export interface IListUsuarioService {
-  listar(): Promise<Usuario[]>;
+  execute(): Promise<Usuario[]>;
 }
 
 export interface IUpdateSenhaUsuarioService {
-  atualizar(
-    usuarioId: string,
-    senha: string
-  ): Promise<RetornoCadastroUsuarioDTO>;
+  execute(usuarioId: string, senha: string): Promise<RetornoCadastroUsuarioDTO>;
 }
 
 export interface IGetUsuarioService {
-  buscar(id: string): Promise<RetornoCadastroUsuarioDTO>;
+  execute(id: string): Promise<RetornoCadastroUsuarioDTO>;
 }
 
 export interface IUpdateUsuarioService {
-  atualizar(
+  execute(
     id,
     { email, nome, fotoPerfil }: Partial<UpdateUsuarioDTO>
   ): Promise<RetornoCadastroUsuarioDTO>;
 }
 
 export interface IDeleteUsuarioService {
-  remover(usuarioId: string): Promise<void>;
+  execute(usuarioId: string): Promise<void>;
 }

@@ -12,7 +12,7 @@ export class UpdateComentarioController {
   async atualizar(req: Request, res: Response) {
     const comentarioId = req.params.id;
     const { conteudo } = req.body;
-    const comentario = await this.updateComentarioService.atualizar(
+    const comentario = await this.updateComentarioService.execute(
       comentarioId,
       {
         conteudo,

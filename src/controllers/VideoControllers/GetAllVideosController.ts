@@ -13,7 +13,7 @@ export class GetAllVideosController {
   async listar(req: Request, res: Response) {
     const query = this.constroiQueryVideo(req);
 
-    const videos = await this.getAllVideosService.listar(query);
+    const videos = await this.getAllVideosService.execute(query);
 
     res.send(videos);
   }

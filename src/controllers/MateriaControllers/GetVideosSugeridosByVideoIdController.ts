@@ -10,10 +10,9 @@ export class GetVideosSugeridosByVideoIdController {
   ) {}
 
   async listarRecomendados(req: Request, res: Response) {
-    const video =
-      await this.getVideosSugeridosByVideoIdController.listarRecomendados(
-        req.params.id
-      );
+    const video = await this.getVideosSugeridosByVideoIdController.execute(
+      req.params.id
+    );
 
     res.send(video);
   }

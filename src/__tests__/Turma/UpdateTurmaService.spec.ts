@@ -14,13 +14,13 @@ describe("UpdateTurmaService", () => {
     );
     const updateTurma = new UpdateTurmaService(turmaRepository);
 
-    let turma = await createTurma.criar({
+    let turma = await createTurma.execute({
       nome: "Turma de Back-end",
       descricao: "Aulas com intuito de ensinar back-end",
       logoDoCurso: "Image.png",
     });
 
-    turma = await updateTurma.atualizar(turma.id, {
+    turma = await updateTurma.execute(turma.id, {
       nome: "Atualizado",
       descricao: "Atualizado",
       logoDoCurso: "Atualizado",

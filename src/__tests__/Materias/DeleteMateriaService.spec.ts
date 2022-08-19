@@ -29,14 +29,14 @@ describe("CreateMateriaService", () => {
       nome: "Matéria de Git",
     });
 
-    await deleteMateriaService.remover(materia.id);
+    await deleteMateriaService.execute(materia.id);
 
     expect(await materiaRepository.buscar(materia.id)).toBe(undefined);
   });
 
   it("Não deve encontrar uma metéria", async () => {
     const error = await deleteMateriaService
-      .remover("123")
+      .execute("123")
       .catch((error) => error);
     expect(error).toBeInstanceOf(NotFoundError);
   });

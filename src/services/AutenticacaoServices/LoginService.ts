@@ -15,10 +15,7 @@ export class LoginService implements ILoginService {
     @Inject("UsuarioRepository") private usuarioRepository: IUsuarioRepository
   ) {}
 
-  async autenticar(
-    email: string,
-    senha: string
-  ): Promise<RetornoAutenticacaoDTO> {
+  async execute(email: string, senha: string): Promise<RetornoAutenticacaoDTO> {
     const usuarioCadastrado = await this.usuarioRepository.buscar(email);
 
     if (!usuarioCadastrado) {

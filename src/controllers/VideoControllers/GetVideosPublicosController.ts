@@ -13,9 +13,7 @@ export class GetVideosPublicosController {
   async listarVideosPublicos(req: Request, res: Response) {
     const query = this.constroiQueryVideo(req);
 
-    const videos = await this.getVideosPublicosService.listarVideosPublicos(
-      query
-    );
+    const videos = await this.getVideosPublicosService.execute(query);
 
     res.send(videos);
   }

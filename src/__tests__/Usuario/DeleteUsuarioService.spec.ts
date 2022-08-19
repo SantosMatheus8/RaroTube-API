@@ -20,14 +20,14 @@ describe("DeleteUsuarioService", () => {
       senha: "123456",
     });
 
-    await deleteUsuarioService.remover(usuario.id);
+    await deleteUsuarioService.execute(usuario.id);
 
     expect(await usuarioRepository.buscarPorId(usuario.id)).toBe(undefined);
   });
 
   it("Deve retornar o erro de usuário não encontrado", async () => {
     const usuarioDeletado = await deleteUsuarioService
-      .remover("123")
+      .execute("123")
       .catch((error) => error);
 
     expect(usuarioDeletado).toBeInstanceOf(NotFoundError);

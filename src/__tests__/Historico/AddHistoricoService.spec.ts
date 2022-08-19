@@ -58,12 +58,12 @@ describe("AddHistoricoService", () => {
 
     const aluno = await alunoRepository.cadastrar({ usuario, turma });
 
-    await addHistoricoService.adicionar({
+    await addHistoricoService.execute({
       videoId: video.id,
       alunoId: aluno.id,
     });
 
-    const historico = await addHistoricoService.adicionar({
+    const historico = await addHistoricoService.execute({
       videoId: video.id,
       alunoId: aluno.id,
     });
@@ -91,7 +91,7 @@ describe("AddHistoricoService", () => {
     const aluno = await alunoRepository.cadastrar({ usuario, turma });
 
     const historico = await addHistoricoService
-      .adicionar({
+      .execute({
         videoId: "123",
         alunoId: aluno.id,
       })
@@ -117,7 +117,7 @@ describe("AddHistoricoService", () => {
     });
 
     const historico = await addHistoricoService
-      .adicionar({
+      .execute({
         videoId: video.id,
         alunoId: "123",
       })

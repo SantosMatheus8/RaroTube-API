@@ -6,7 +6,7 @@ import { IEnviaEmailComCodigoService } from "../../@types/services/IEnviaEmailCo
 export class EnviaEmailComCodigoService implements IEnviaEmailComCodigoService {
   constructor(@Inject("EmailClient") private emailClient: IEmailClient) {}
 
-  async sendMail({
+  async execute({
     emailAluno,
     emailOrigem,
     assunto,

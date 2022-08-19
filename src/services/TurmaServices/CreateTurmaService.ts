@@ -12,7 +12,7 @@ export class CreateTurmaService implements ICreateTurmaService {
     @Inject("ValidationService") private validationService: IValidationService
   ) {}
 
-  async criar({ nome, descricao, logoDoCurso }: TurmaDTO): Promise<Turma> {
+  async execute({ nome, descricao, logoDoCurso }: TurmaDTO): Promise<Turma> {
     const turma = new Turma();
     Object.assign(turma, { nome, descricao, logoDoCurso });
 

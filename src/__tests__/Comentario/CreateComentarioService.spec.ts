@@ -52,7 +52,7 @@ describe("CreateComentarioService", () => {
       senha: "123456",
     });
 
-    const comentario = await createComentarioService.criar({
+    const comentario = await createComentarioService.execute({
       videoId: video.id,
       usuarioId: usuario.id,
       conteudo: "Gostei do vídeo",
@@ -71,7 +71,7 @@ describe("CreateComentarioService", () => {
     });
 
     const comentario = await createComentarioService
-      .criar({
+      .execute({
         videoId: "123",
         usuarioId: usuario.id,
         conteudo: "Ótimo vídeo",
@@ -98,7 +98,7 @@ describe("CreateComentarioService", () => {
     });
 
     const comentario = await createComentarioService
-      .criar({
+      .execute({
         videoId: video.id,
         usuarioId: "123",
         conteudo: "Ótimo vídeo",

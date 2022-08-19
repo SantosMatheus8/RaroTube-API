@@ -10,7 +10,7 @@ export class GetComentariosByVideoIdController {
   ) {}
 
   async listar(req: Request, res: Response) {
-    const comentarios = await this.getComentariosByVideoIdService.listar(
+    const comentarios = await this.getComentariosByVideoIdService.execute(
       req.params.id
     );
 

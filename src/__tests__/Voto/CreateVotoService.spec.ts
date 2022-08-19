@@ -47,7 +47,7 @@ describe("CreateVotoService", () => {
       conteudo: "Adorei o vídeo",
     });
 
-    const novoVoto = await createVotoService.criar({
+    const novoVoto = await createVotoService.execute({
       comentarioId: comentario.id,
       usuarioId: usuario.id,
       voto: true,
@@ -81,13 +81,13 @@ describe("CreateVotoService", () => {
       usuario,
       conteudo: "Adorei o vídeo",
     });
-    await createVotoService.criar({
+    await createVotoService.execute({
       comentarioId: comentario.id,
       usuarioId: usuario.id,
       voto: false,
     });
     const voto2 = await createVotoService
-      .criar({
+      .execute({
         comentarioId: comentario.id,
         usuarioId: usuario.id,
         voto: false,
@@ -98,7 +98,7 @@ describe("CreateVotoService", () => {
 
   it("Não deve encontrar o comentario", async () => {
     const voto = await createVotoService
-      .criar({
+      .execute({
         comentarioId: "123",
         usuarioId: "123",
         voto: false,

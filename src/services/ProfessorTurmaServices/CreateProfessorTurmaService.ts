@@ -21,7 +21,7 @@ export class CreateProfessorTurmaService
     @Inject("ValidationService") private validationService: IValidationService
   ) {}
 
-  async criar({
+  async execute({
     professorId,
     turmaId,
   }: CreateProfessorTurmaDTO): Promise<ProfessorTurma> {

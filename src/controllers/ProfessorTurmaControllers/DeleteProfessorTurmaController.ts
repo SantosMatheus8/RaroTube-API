@@ -1,16 +1,16 @@
 import { Inject, Service } from "typedi";
-import { IProfessorTurmaRepository } from "../../@types/repositories/IProfessorTurmaRepository";
 import { Request, Response } from "express";
+import { IDeleteProfessorTurmaService } from "../../@types/services/IProfessorTurmaService";
 
 @Service("DeleteProfessorTurmaController")
 export class DeleteProfessorTurmaController {
   constructor(
     @Inject("DeleteProfessorTurmasService")
-    private deleteProfessorTurmaService: IProfessorTurmaRepository
+    private deleteProfessorTurmaService: IDeleteProfessorTurmaService
   ) {}
 
   async remover(req: Request, res: Response) {
-    await this.deleteProfessorTurmaService.remover(req.body);
+    await this.deleteProfessorTurmaService.execute(req.body);
 
     res.status(204).send();
   }

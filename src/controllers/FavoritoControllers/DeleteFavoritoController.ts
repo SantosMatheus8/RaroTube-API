@@ -1,16 +1,16 @@
 import { Inject, Service } from "typedi";
-import { IFavoritoRepository } from "../../@types/repositories/IFavoritoRepository";
 import { Request, Response } from "express";
+import { IDeleteFavoritosService } from "../../@types/services/IFavoritoService";
 
 @Service("DeleteFavoritoController")
 export class DeleteFavoritoController {
   constructor(
     @Inject("DeleteFavoritosService")
-    private deleteFavoritoService: IFavoritoRepository
-  ) { }
+    private deleteFavoritoService: IDeleteFavoritosService
+  ) {}
 
   async remover(req: Request, res: Response) {
-    await this.deleteFavoritoService.remover(req.body);
+    await this.deleteFavoritoService.execute(req.body);
 
     res.status(204).send();
   }

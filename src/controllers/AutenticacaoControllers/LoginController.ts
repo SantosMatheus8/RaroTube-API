@@ -10,7 +10,7 @@ export class LoginController {
     const email = req.header("email");
     const senha = req.header("senha");
 
-    const token = await this.loginService.autenticar(email, senha);
+    const token = await this.loginService.execute(email, senha);
 
     res.status(200).send(token);
   }

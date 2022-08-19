@@ -18,7 +18,7 @@ export class AddHistoricoService implements IAddHistoricoService {
     @Inject("ValidationService") private validationService: IValidationService
   ) {}
 
-  async adicionar({ videoId, alunoId }: HistoricoDTO): Promise<Historico> {
+  async execute({ videoId, alunoId }: HistoricoDTO): Promise<Historico> {
     const historico = new Historico();
     Object.assign(historico, { videoId, alunoId });
 

@@ -17,7 +17,7 @@ export class EnviaEmailRecuperacaoSenhaService
     @Inject("UsuarioRepository") private usuarioRepository: IUsuarioRepository
   ) {}
 
-  async sendMail({
+  async execute({
     emailAluno,
     emailOrigem,
     assunto,

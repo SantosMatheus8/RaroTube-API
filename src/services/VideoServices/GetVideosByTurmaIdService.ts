@@ -15,7 +15,7 @@ export class GetVideosByTurmaIdService implements IGetVideosByTurmaIdService {
     @Inject("TurmaRepository") private turmaRepository: ITurmaRepository
   ) {}
 
-  async listar(queryVideos: QueryVideosPorTurma): Promise<RetornoListaVideos> {
+  async execute(queryVideos: QueryVideosPorTurma): Promise<RetornoListaVideos> {
     const { turmaId } = queryVideos;
 
     const turma = await this.turmaRepository.buscar(turmaId);

@@ -12,10 +12,7 @@ export class UpdateSenhaUsuarioController {
   async atualizar(req: Request, res: Response) {
     const { codigo, senha } = req.body;
 
-    const usuario = await this.updateSenhaUsuarioService.atualizar(
-      codigo,
-      senha
-    );
+    const usuario = await this.updateSenhaUsuarioService.execute(codigo, senha);
 
     res.send(usuario);
   }

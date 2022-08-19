@@ -13,7 +13,7 @@ export class GetVideosByTurmaIdController {
   async listar(req: Request, res: Response) {
     const query = this.constroiQueryVideo(req);
 
-    const videos = await this.getVideosByTurmaIdService.listar(query);
+    const videos = await this.getVideosByTurmaIdService.execute(query);
 
     res.send(videos);
   }

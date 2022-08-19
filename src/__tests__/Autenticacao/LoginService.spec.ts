@@ -57,14 +57,14 @@ describe("LoginService", () => {
   });
 
   it("Um professor deve ser logado", async () => {
-    const professor = await cadastrarProfessorService.cadastrar({
+    const professor = await cadastrarProfessorService.execute({
       email: "email@email.com",
       nome: "Matheus",
       fotoPerfil: "./upload/42380523yhr",
       senha: "123456",
     });
 
-    const login = await loginService.autenticar(professor.email, "123456");
+    const login = await loginService.execute(professor.email, "123456");
 
     expect(login.tipoUsuario).toBe("professor");
   });
@@ -76,7 +76,7 @@ describe("LoginService", () => {
       logoDoCurso: "./upload/42380523yhr2304238f2",
     });
 
-    const aluno = await cadastrarAlunoService.cadastrar({
+    const aluno = await cadastrarAlunoService.execute({
       email: "email@email.com",
       nome: "Matheus",
       fotoPerfil: "./upload/42380523yhr",
@@ -84,34 +84,34 @@ describe("LoginService", () => {
       turmaId: turma.id,
     });
 
-    const login = await loginService.autenticar(aluno.email, "123456");
+    const login = await loginService.execute(aluno.email, "123456");
 
     expect(login.tipoUsuario).toBe("aluno");
   });
 
   it("Um admin deve ser logado", async () => {
-    const admin = await cadastrarAdminService.cadastrar({
+    const admin = await cadastrarAdminService.execute({
       email: "emailew3@email.com",
       nome: "Matheus",
       fotoPerfil: "./upload/423820523yhr",
       senha: "123456",
     });
 
-    const login = await loginService.autenticar(admin.email, "123456");
+    const login = await loginService.execute(admin.email, "123456");
 
     expect(login.tipoUsuario).toBe("admin");
   });
 
   it("Deve retornar o erro de usuario ou senha invalidos", async () => {
     const login = await loginService
-      .autenticar("123", "123456")
+      .execute("123", "123456")
       .catch((error) => error);
 
     expect(login).toBeInstanceOf(UsuarioOuSenhaInvalidos);
   });
 
   it("Deve retornar o erro de usuario ou senha invalidos", async () => {
-    const professor = await cadastrarProfessorService.cadastrar({
+    const professor = await cadastrarProfessorService.execute({
       email: "email@email.com",
       nome: "Matheus",
       fotoPerfil: "./upload/42380523yhr",
@@ -119,7 +119,7 @@ describe("LoginService", () => {
     });
 
     const login = await loginService
-      .autenticar(professor.email, "123")
+      .execute(professor.email, "123")
       .catch((error) => error);
 
     expect(login).toBeInstanceOf(UsuarioOuSenhaInvalidos);

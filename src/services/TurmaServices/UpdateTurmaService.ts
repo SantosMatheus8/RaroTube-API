@@ -11,7 +11,7 @@ export class UpdateTurmaService implements IUpdateTurmaService {
     @Inject("TurmaRepository") private turmaRepository: ITurmaRepository
   ) {}
 
-  async atualizar(
+  async execute(
     id,
     { nome, descricao, logoDoCurso }: TurmaDTO
   ): Promise<Turma> {
@@ -26,6 +26,5 @@ export class UpdateTurmaService implements IUpdateTurmaService {
     }
 
     return turma;
-
   }
 }

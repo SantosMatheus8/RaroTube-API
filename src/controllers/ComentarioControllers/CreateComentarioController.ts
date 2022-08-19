@@ -11,7 +11,7 @@ export class CreateComentarioController {
 
   async criar(req: Request, res: Response) {
     const { videoId, usuarioId, conteudo } = req.body;
-    const comentario = await this.createComentarioService.criar({
+    const comentario = await this.createComentarioService.execute({
       videoId,
       usuarioId,
       conteudo,

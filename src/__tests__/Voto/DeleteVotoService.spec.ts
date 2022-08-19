@@ -50,18 +50,18 @@ describe("CreateVotoService", () => {
       conteudo: "Adorei o vídeo",
     });
 
-    const novoVoto = await createVotoService.criar({
+    const novoVoto = await createVotoService.execute({
       comentarioId: comentario.id,
       usuarioId: usuario.id,
       voto: true,
     });
 
-    await deleteVotoService.remover(novoVoto);
+    await deleteVotoService.execute(novoVoto);
 
     expect(await votoRepository.buscar(novoVoto)).toBe(undefined);
 
     const error = await deleteVotoService
-      .remover({
+      .execute({
         comentarioId: "123",
         usuarioId: "123",
       })

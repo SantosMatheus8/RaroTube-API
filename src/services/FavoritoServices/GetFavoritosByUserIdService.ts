@@ -18,7 +18,7 @@ export class GetFavoritosByUserIdService
     @Inject("AlunoRepository") private alunoRespository: IAlunoRepository
   ) {}
 
-  async listar(
+  async execute(
     queryFavoritosPorAluno: QueryFavoritosPorAluno
   ): Promise<RetornoListaFavoritos> {
     const { alunoId } = queryFavoritosPorAluno;

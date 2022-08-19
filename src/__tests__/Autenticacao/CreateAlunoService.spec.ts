@@ -37,7 +37,7 @@ describe("CreateAlunoService", () => {
       logoDoCurso: "./upload/42380523yhr2304238f2",
     });
 
-    const aluno = await cadastrarAlunoService.cadastrar({
+    const aluno = await cadastrarAlunoService.execute({
       email: "email@email.com",
       nome: "Matheus",
       fotoPerfil: "./upload/42380523yhr",
@@ -59,7 +59,7 @@ describe("CreateAlunoService", () => {
       logoDoCurso: "./upload/42380523yhr2304238f2",
     });
 
-    await cadastrarAlunoService.cadastrar({
+    await cadastrarAlunoService.execute({
       email: "email@email.com",
       nome: "Matheus",
       fotoPerfil: "./upload/42380523yhr",
@@ -68,7 +68,7 @@ describe("CreateAlunoService", () => {
     });
 
     const emailJaCadastrado = await cadastrarAlunoService
-      .cadastrar({
+      .execute({
         email: "email@email.com",
         nome: "Felipe",
         fotoPerfil: "./upload/42380523yhr",
@@ -88,7 +88,7 @@ describe("CreateAlunoService", () => {
     });
 
     const erroTurmaId = await cadastrarAlunoService
-      .cadastrar({
+      .execute({
         email: "email@email.com",
         nome: "Matheus",
         fotoPerfil: "./upload/42380523yhr",

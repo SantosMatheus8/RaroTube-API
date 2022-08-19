@@ -12,7 +12,7 @@ export class CreateMateriaController {
   async criar(req: Request, res: Response) {
     const { videoId, nome } = req.body;
 
-    const materia = await this.createMateriaService.criar({ videoId, nome });
+    const materia = await this.createMateriaService.execute({ videoId, nome });
 
     return res.status(201).send(materia);
   }

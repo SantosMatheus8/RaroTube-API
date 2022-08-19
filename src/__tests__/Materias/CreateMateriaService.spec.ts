@@ -31,7 +31,7 @@ describe("CreateMateriaService", () => {
       imagemBanner: "./upload/34jkrf2j3kfma04ds",
     });
 
-    const materia = await createMateriaService.criar({
+    const materia = await createMateriaService.execute({
       videoId: video.id,
       nome: "Matéria de Git",
     });
@@ -44,7 +44,7 @@ describe("CreateMateriaService", () => {
 
   it("Deve retornar erro de vídeo não encontrado", async () => {
     const materia = await createMateriaService
-      .criar({
+      .execute({
         videoId: "123",
         nome: "Matéria de Git",
       })

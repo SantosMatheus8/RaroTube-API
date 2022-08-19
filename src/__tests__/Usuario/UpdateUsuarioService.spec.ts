@@ -20,7 +20,7 @@ describe("UpdateUsuarioService", () => {
       senha: "123456",
     });
 
-    const usuarioAlterado = await updateUsuarioService.atualizar(usuario.id, {
+    const usuarioAlterado = await updateUsuarioService.execute(usuario.id, {
       email: "matheus@email.com",
       nome: "Matheus Pereira",
       fotoPerfil: "./upload/fotoperfil",
@@ -33,7 +33,7 @@ describe("UpdateUsuarioService", () => {
 
   it("Deve retornar o erro de usuário não encontrado", async () => {
     const usuarioAlterado = await updateUsuarioService
-      .atualizar("123", {
+      .execute("123", {
         email: "matheus@email.com",
         nome: "Matheus Pereira",
         fotoPerfil: "./upload/fotoperfil",

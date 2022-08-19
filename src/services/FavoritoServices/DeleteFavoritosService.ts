@@ -11,7 +11,7 @@ export class DeleteFavoritosService implements IDeleteFavoritosService {
     private favoritoRespository: IFavoritoRepository
   ) {}
 
-  async remover({ videoId, alunoId }: CreateFavoritoDTO): Promise<void> {
+  async execute({ videoId, alunoId }: CreateFavoritoDTO): Promise<void> {
     const favorito = await this.favoritoRespository.buscar({
       videoId,
       alunoId,

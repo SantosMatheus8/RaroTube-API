@@ -75,17 +75,17 @@ describe("GetFavoritosByUserIdService", () => {
       usuario,
     });
 
-    const favorito1 = await createFavoritoService.criar({
+    const favorito1 = await createFavoritoService.execute({
       videoId: video1.id,
       alunoId: aluno.id,
     });
 
-    const favorito2 = await createFavoritoService.criar({
+    const favorito2 = await createFavoritoService.execute({
       videoId: video2.id,
       alunoId: aluno.id,
     });
 
-    const favoritos = await getFavoritosByUserIdService.listar({
+    const favoritos = await getFavoritosByUserIdService.execute({
       alunoId: aluno.id,
       page: 1,
       per: 4,
@@ -104,7 +104,7 @@ describe("GetFavoritosByUserIdService", () => {
 
   it("Deve não encontrar um aluno", async () => {
     const favoritos = await getFavoritosByUserIdService
-      .listar({
+      .execute({
         alunoId: "123",
         page: 1,
         per: 4,

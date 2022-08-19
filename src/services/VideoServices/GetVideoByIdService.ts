@@ -9,7 +9,7 @@ export class GetVideoById implements IGetVideoByIdService {
   constructor(
     @Inject("VideoRepository") private videoRepository: IVideoRepository
   ) {}
-  async buscar(id: string): Promise<Video> {
+  async execute(id: string): Promise<Video> {
     const video = await this.videoRepository.buscar(id);
 
     if (!video) {

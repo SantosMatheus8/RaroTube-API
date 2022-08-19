@@ -9,7 +9,7 @@ export class DeleteUsuarioService implements IDeleteUsuarioService {
     @Inject("UsuarioRepository") private usuarioRepository: IUsuarioRepository
   ) {}
 
-  async remover(usuarioId: string): Promise<void> {
+  async execute(usuarioId: string): Promise<void> {
     const usuario = await this.usuarioRepository.buscarPorId(usuarioId);
 
     if (!usuario) {

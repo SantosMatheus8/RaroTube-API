@@ -20,7 +20,7 @@ export class CadastrarAlunoService implements ICadastrarAlunoService {
     @Inject("ValidationService") private validationService: IValidationService
   ) {}
 
-  async cadastrar({
+  async execute({
     email,
     nome,
     fotoPerfil,

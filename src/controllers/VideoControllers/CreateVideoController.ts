@@ -12,7 +12,7 @@ export class CreateVideoController {
   async criar(req: Request, res: Response) {
     const { turmaId, nome, descricao, arquivoDoVideo, imagemBanner } = req.body;
 
-    const video = await this.createVideoService.criar({
+    const video = await this.createVideoService.execute({
       turmaId,
       nome,
       descricao,

@@ -10,7 +10,7 @@ export class ListUsuarioController {
   ) {}
 
   async listar(req: Request, res: Response) {
-    const usuario = await this.listUsuarioService.listar();
+    const usuario = await this.listUsuarioService.execute();
 
     res.send(usuario);
   }

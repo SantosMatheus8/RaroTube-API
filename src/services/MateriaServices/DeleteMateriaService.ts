@@ -9,7 +9,7 @@ export class DeleteMateriaService implements IDeleteMateriaService {
     @Inject("MateriaRepository") private materiaRepository: IMateriaRepository
   ) {}
 
-  async remover(id: string): Promise<void> {
+  async execute(id: string): Promise<void> {
     const materia = await this.materiaRepository.buscar(id);
 
     if (!materia) {

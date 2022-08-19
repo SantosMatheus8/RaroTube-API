@@ -11,7 +11,7 @@ export class UpdateComentarioService implements IUpdateComentarioService {
     private comentarioRepository: IComentarioRepository
   ) {}
 
-  async atualizar(
+  async execute(
     id: string,
     { conteudo }: Partial<Comentario>
   ): Promise<Comentario> {
@@ -23,6 +23,5 @@ export class UpdateComentarioService implements IUpdateComentarioService {
     }
 
     return comentario;
-
   }
 }

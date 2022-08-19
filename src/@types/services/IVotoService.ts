@@ -2,7 +2,7 @@ import { UsuarioVotaComentario } from "../../models/usuario_vota_comentario";
 import { CreateVotoDTO, DeleteVotoDTO } from "../../@types/dto/VotoDTO";
 
 export interface ICreateVotoService {
-  criar({
+  execute({
     comentarioId,
     usuarioId,
     voto,
@@ -10,5 +10,5 @@ export interface ICreateVotoService {
 }
 
 export interface IDeleteVotoService {
-  remover({ comentarioId, usuarioId }: DeleteVotoDTO): Promise<void>;
+  execute({ comentarioId, usuarioId }: DeleteVotoDTO): Promise<void>;
 }
