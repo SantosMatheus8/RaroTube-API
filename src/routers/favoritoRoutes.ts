@@ -5,6 +5,7 @@ import { DeleteFavoritoController } from "../controllers/FavoritoControllers/Del
 import { GetFavoritosByUserIdController } from "../controllers/FavoritoControllers/GetFavoritosByUserIdController";
 import { errorHandlerWrapper } from "../middlewares/errorHandlers";
 import { middlewareAutenticacao } from "../middlewares/autenticacao";
+
 const router = Router();
 
 const createController = (): CreateFavoritosController => {
@@ -22,16 +23,20 @@ const getFavoritosByUserIdController = (): GetFavoritosByUserIdController => {
 };
 
 const createRouter = () => {
-  router.use(middlewareAutenticacao)
+  router.use(middlewareAutenticacao);
   router.post(
     "",
-    errorHandlerWrapper((req, res) => createController().criar(req, res))
+    errorHandlerWrapper((req, res) => createController().handle(req, res))
   );
-  router.delete("",
-    errorHandlerWrapper((req, res) => deleteController().remover(req, res))
+  router.delete(
+    "",
+    errorHandlerWrapper((req, res) => deleteController().handle(req, res))
   );
-  router.get("/:alunoId",
-    errorHandlerWrapper((req, res) => getFavoritosByUserIdController().listar(req, res))
+  router.get(
+    "/:alunoId",
+    errorHandlerWrapper((req, res) =>
+      getFavoritosByUserIdController().handle(req, res)
+    )
   );
 
   return router;

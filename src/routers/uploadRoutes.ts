@@ -13,14 +13,14 @@ const createRouter = () => {
   router.post(
     "/imagem",
     upload.single("file"),
-    errorHandlerWrapper(new UploadImagemController().upload)
+    errorHandlerWrapper(new UploadImagemController().handle)
   );
   router.post(
     "/video",
     middlewareAutenticacao,
     middlewareAutorizacaoProfessorEAdmin,
     upload.single("file"),
-    errorHandlerWrapper(new UploadVideoController().upload)
+    errorHandlerWrapper(new UploadVideoController().handle)
   );
 
   return router;

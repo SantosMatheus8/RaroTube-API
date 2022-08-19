@@ -8,7 +8,7 @@ export class CreateVotoController {
     @Inject("CreateVotoService") private createVotoService: ICreateVotoService
   ) {}
 
-  async criar(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     const { comentarioId, usuarioId, voto } = req.body;
 
     const novoVoto = await this.createVotoService.execute({

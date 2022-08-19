@@ -9,7 +9,7 @@ export class ListUsuarioController {
     private listUsuarioService: IListUsuarioService
   ) {}
 
-  async listar(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     const usuario = await this.listUsuarioService.execute();
 
     res.send(usuario);

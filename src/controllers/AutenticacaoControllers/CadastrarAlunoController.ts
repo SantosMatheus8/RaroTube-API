@@ -9,7 +9,7 @@ export class CadastrarAlunoController {
     private cadastrarAlunoService: ICadastrarAlunoService
   ) {}
 
-  async cadastrar(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     const aluno = await this.cadastrarAlunoService.execute(req.body);
 
     res.status(201).send(aluno);

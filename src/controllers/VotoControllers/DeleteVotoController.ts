@@ -9,7 +9,7 @@ export class DeleteVotoController {
     private deleteVotoService: IDeleteVotoService
   ) {}
 
-  async remover(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     const { comentarioId, usuarioId } = req.body;
 
     await this.deleteVotoService.execute({ comentarioId, usuarioId });

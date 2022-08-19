@@ -9,7 +9,7 @@ export class UpdateUsuarioController {
     private updateUsuarioService: IUpdateUsuarioService
   ) {}
 
-  async atualizar(request: Request, response: Response) {
+  async handle(request: Request, response: Response) {
     const usuarioId = request.params.id;
     const { email, nome, fotoPerfil } = request.body;
 

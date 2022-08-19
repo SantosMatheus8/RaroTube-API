@@ -6,7 +6,7 @@ import { ILoginService } from "../../@types/services/IAutenticacaoService";
 export class LoginController {
   constructor(@Inject("LoginService") private loginService: ILoginService) {}
 
-  async autenticar(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     const email = req.header("email");
     const senha = req.header("senha");
 

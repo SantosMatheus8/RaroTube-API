@@ -9,7 +9,7 @@ export class GetVideoByIdController {
     private getVideoByIdService: IGetVideoByIdService
   ) {}
 
-  async buscar(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     const video = await this.getVideoByIdService.execute(req.params.id);
 
     res.send(video);

@@ -10,7 +10,7 @@ export class GetProfessorTurmaByProfessorIdController {
     private getProfessorTurmaByProfessorIdService: IGetProfessorTurmaByProfessorIdService
   ) {}
 
-  async listar(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     const query = this.constroiQueryProfessorTurma(req);
 
     const turmas = await this.getProfessorTurmaByProfessorIdService.execute(

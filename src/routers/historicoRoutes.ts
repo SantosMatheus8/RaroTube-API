@@ -20,12 +20,13 @@ const createRouter = () => {
   router.use(middlewareAutenticacao);
   router.post(
     "",
-    errorHandlerWrapper((req, res) =>
-      addHistoricoController().adicionar(req, res)
-    )
+    errorHandlerWrapper((req, res) => addHistoricoController().handle(req, res))
   );
-  router.get("/:alunoId",
-    errorHandlerWrapper((req, res) => getHistoricoByUserIdController().listar(req, res))
+  router.get(
+    "/:alunoId",
+    errorHandlerWrapper((req, res) =>
+      getHistoricoByUserIdController().handle(req, res)
+    )
   );
 
   return router;

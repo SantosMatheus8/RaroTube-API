@@ -9,9 +9,9 @@ export class UpdateTurmaController {
     private updateTurmaService: IUpdateTurmaService
   ) {}
 
-  async atualizar(request: Request, response: Response) {
-    const turmaId = request.params.id;
-    const { nome, descricao, logoDoCurso } = request.body;
+  async handle(req: Request, res: Response) {
+    const turmaId = req.params.id;
+    const { nome, descricao, logoDoCurso } = req.body;
 
     const turma = await this.updateTurmaService.execute(turmaId, {
       nome,
@@ -19,6 +19,6 @@ export class UpdateTurmaController {
       logoDoCurso,
     });
 
-    response.send(turma);
+    res.send(turma);
   }
 }

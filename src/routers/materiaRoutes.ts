@@ -23,14 +23,21 @@ const getAllMateriasController = (): GetAllMateriasController => {
 
 const createRouter = () => {
   router.use(middlewareAutenticacao);
-  router.get("",
-    errorHandlerWrapper((req, res) => getAllMateriasController().listar(req, res))
+  router.get(
+    "",
+    errorHandlerWrapper((req, res) =>
+      getAllMateriasController().handle(req, res)
+    )
   );
-  router.post("", middlewareAutorizacaoProfessorEAdmin,
-    errorHandlerWrapper((req, res) => createController().criar(req, res))
+  router.post(
+    "",
+    middlewareAutorizacaoProfessorEAdmin,
+    errorHandlerWrapper((req, res) => createController().handle(req, res))
   );
-  router.delete("/:id", middlewareAutorizacaoProfessorEAdmin,
-    errorHandlerWrapper((req, res) => deleteController().remover(req, res))
+  router.delete(
+    "/:id",
+    middlewareAutorizacaoProfessorEAdmin,
+    errorHandlerWrapper((req, res) => deleteController().handle(req, res))
   );
   return router;
 };

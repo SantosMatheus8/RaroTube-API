@@ -9,9 +9,9 @@ export class GetTurmaController {
     private getTurmaService: IGetTurmaService
   ) {}
 
-  async get(request: Request, response: Response) {
-    const turma = await this.getTurmaService.execute(String(request.params.id));
+  async handle(req: Request, res: Response) {
+    const turma = await this.getTurmaService.execute(String(req.params.id));
 
-    response.send(turma);
+    res.send(turma);
   }
 }

@@ -28,19 +28,26 @@ const deleteController = (): DeleteTurmaController => {
 };
 
 const createRouter = () => {
-  router.get("", (req, res) => listController().listar(req, res));
+  router.get("", (req, res) => listController().handle(req, res));
   router.use(middlewareAutenticacao);
-  router.post("", middlewareAutorizacaoAdmin,
-    errorHandlerWrapper((req, res) => createController().criar(req, res))
+  router.post(
+    "",
+    middlewareAutorizacaoAdmin,
+    errorHandlerWrapper((req, res) => createController().handle(req, res))
   );
-  router.get("/:id",
-    errorHandlerWrapper((req, res) => getController().get(req, res))
+  router.get(
+    "/:id",
+    errorHandlerWrapper((req, res) => getController().handle(req, res))
   );
-  router.put("/:id", middlewareAutorizacaoAdmin,
-    errorHandlerWrapper((req, res) => updateController().atualizar(req, res))
+  router.put(
+    "/:id",
+    middlewareAutorizacaoAdmin,
+    errorHandlerWrapper((req, res) => updateController().handle(req, res))
   );
-  router.delete("/:id", middlewareAutorizacaoAdmin,
-    errorHandlerWrapper((req, res) => deleteController().remove(req, res))
+  router.delete(
+    "/:id",
+    middlewareAutorizacaoAdmin,
+    errorHandlerWrapper((req, res) => deleteController().handle(req, res))
   );
 
   return router;

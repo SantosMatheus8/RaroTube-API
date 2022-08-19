@@ -21,13 +21,17 @@ const enviaEmailSenhaController = (): EnviaEmailRecuperacaoSenhaController => {
 };
 
 const createRouter = () => {
-  router.post("/cadastro",
+  router.post(
+    "/cadastro",
     middlewareAutenticacao,
     middlewareAutorizacaoProfessorEAdmin,
-    errorHandlerWrapper((req, res) => enviaEmailController().sendMail(req, res))
+    errorHandlerWrapper((req, res) => enviaEmailController().handle(req, res))
   );
-  router.post("/redefinir",
-    errorHandlerWrapper((req, res) => enviaEmailSenhaController().sendMail(req, res))
+  router.post(
+    "/redefinir",
+    errorHandlerWrapper((req, res) =>
+      enviaEmailSenhaController().handle(req, res)
+    )
   );
 
   return router;

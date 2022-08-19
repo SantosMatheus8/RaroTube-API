@@ -9,7 +9,7 @@ export class DeleteProfessorTurmaController {
     private deleteProfessorTurmaService: IDeleteProfessorTurmaService
   ) {}
 
-  async remover(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     await this.deleteProfessorTurmaService.execute(req.body);
 
     res.status(204).send();

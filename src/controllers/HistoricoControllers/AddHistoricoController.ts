@@ -9,7 +9,7 @@ export class AddHistoricoController {
     private addHistoricoService: IAddHistoricoService
   ) {}
 
-  async adicionar(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     const { videoId, alunoId } = req.body;
 
     const historico = await this.addHistoricoService.execute({

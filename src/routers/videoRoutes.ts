@@ -49,30 +49,30 @@ const getVideosByTurmaIdController = (): GetVideosByTurmaIdController => {
 
 const createRouter = () => {
   router.get("/publicos", (req, res) =>
-    getVideosPublicosController().listarVideosPublicos(req, res)
+    getVideosPublicosController().handle(req, res)
   );
 
   router.use(middlewareAutenticacao);
 
   router.post("", middlewareAutorizacaoProfessorEAdmin, (req, res) =>
-    createController().criar(req, res)
+    createController().handle(req, res)
   );
   router.delete("/:id", middlewareAutorizacaoProfessorEAdmin, (req, res) =>
-    deleteController().remover(req, res)
+    deleteController().handle(req, res)
   );
   router.get("", middlewareAutorizacaoAdmin, (req, res) =>
-    getAllVideosController().listar(req, res)
+    getAllVideosController().handle(req, res)
   );
-  router.get("/:id", (req, res) => getVideoByIdController().buscar(req, res));
+  router.get("/:id", (req, res) => getVideoByIdController().handle(req, res));
   router.get("/:id/recomendados", (req, res) =>
-    videosSugeridosByVideoIdController().listarRecomendados(req, res)
+    videosSugeridosByVideoIdController().handle(req, res)
   );
   router.get("/turma/:turmaId", (req, res) =>
-    getVideosByTurmaIdController().listar(req, res)
+    getVideosByTurmaIdController().handle(req, res)
   );
-  router.put("/:id",
-    middlewareAutorizacaoProfessorEAdmin,
-    (req, res) => updateVideoController().atualizar(req, res));
+  router.put("/:id", middlewareAutorizacaoProfessorEAdmin, (req, res) =>
+    updateVideoController().handle(req, res)
+  );
 
   return router;
 };

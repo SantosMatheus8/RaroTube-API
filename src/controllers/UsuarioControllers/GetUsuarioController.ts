@@ -9,7 +9,7 @@ export class GetUsuarioController {
     private getUsuarioService: IGetUsuarioService
   ) {}
 
-  async get(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     const usuario = await this.getUsuarioService.execute(String(req.params.id));
 
     res.send(usuario);

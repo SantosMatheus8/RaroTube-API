@@ -9,7 +9,7 @@ export class UpdateSenhaUsuarioController {
     private updateSenhaUsuarioService: IUpdateSenhaUsuarioService
   ) {}
 
-  async atualizar(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     const { codigo, senha } = req.body;
 
     const usuario = await this.updateSenhaUsuarioService.execute(codigo, senha);

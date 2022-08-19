@@ -9,7 +9,7 @@ export class CadastrarAdminController {
     private cadastrarAdminService: ICadastrarService
   ) {}
 
-  async cadastrar(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     const admin = await this.cadastrarAdminService.execute(req.body);
 
     res.status(201).send(admin);

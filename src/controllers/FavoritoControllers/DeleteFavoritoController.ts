@@ -9,7 +9,7 @@ export class DeleteFavoritoController {
     private deleteFavoritoService: IDeleteFavoritosService
   ) {}
 
-  async remover(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     await this.deleteFavoritoService.execute(req.body);
 
     res.status(204).send();

@@ -9,8 +9,9 @@ export class CreateComentarioController {
     private createComentarioService: ICreateComentarioService
   ) {}
 
-  async criar(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     const { videoId, usuarioId, conteudo } = req.body;
+
     const comentario = await this.createComentarioService.execute({
       videoId,
       usuarioId,

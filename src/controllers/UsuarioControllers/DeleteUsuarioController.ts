@@ -9,8 +9,9 @@ export class DeleteUsuarioController {
     private deleteUsuarioService: IDeleteUsuarioService
   ) {}
 
-  async remover(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     await this.deleteUsuarioService.execute(req.params.id);
+
     res.status(204).send();
   }
 }

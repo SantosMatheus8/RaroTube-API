@@ -3,7 +3,7 @@ import { instanceToInstance } from "class-transformer";
 import { BadRequestError } from "../../@types/errors/BadRequestError";
 
 export class UploadImagemController {
-  async upload(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     const { file } = req;
 
     const arquivo = instanceToInstance({

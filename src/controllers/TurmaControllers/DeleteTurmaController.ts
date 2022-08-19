@@ -9,8 +9,9 @@ export class DeleteTurmaController {
     private deleteTurmaService: IDeleteTurmaService
   ) {}
 
-  async remove(request: Request, response: Response) {
-    await this.deleteTurmaService.execute(String(request.params.id));
-    response.status(204).send();
+  async handle(req: Request, res: Response) {
+    await this.deleteTurmaService.execute(String(req.params.id));
+
+    res.status(204).send();
   }
 }

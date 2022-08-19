@@ -1,15 +1,15 @@
+import { IEnviaEmailComCodigoService } from "../../@types/services/IEnviaEmailComCodigoService";
 import { Request, Response } from "express";
 import { Inject, Service } from "typedi";
-import { EnviaEmailComCodigoService } from "../../services/EmailServices/EnviaEmailComCodigoService";
 
 @Service("EnviaEmailComCodigoController")
 export class EnviaEmailComCodigoController {
   constructor(
     @Inject("EnviaEmailComCodigoService")
-    private enviaEmailComCodigoService: EnviaEmailComCodigoService
+    private enviaEmailComCodigoService: IEnviaEmailComCodigoService
   ) {}
 
-  async sendMail(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     const { emailAluno, emailOrigem, assunto, codigoAcesso } = req.body;
 
     this.enviaEmailComCodigoService.execute({

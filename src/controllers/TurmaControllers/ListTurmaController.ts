@@ -9,7 +9,7 @@ export class ListTurmaController {
     private listTurmaService: IListTurmaService
   ) {}
 
-  async listar(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     const turma = await this.listTurmaService.execute();
 
     res.send(turma);

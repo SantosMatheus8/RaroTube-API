@@ -37,20 +37,20 @@ const createRouter = () => {
   router.use(middlewareAutenticacao)
   router.post(
     "",
-    errorHandlerWrapper((req, res) => createController().criar(req, res))
+    errorHandlerWrapper((req, res) => createController().handle(req, res))
   );
   router.delete(
     "/:id",
-    errorHandlerWrapper((req, res) => deleteController().remover(req, res))
+    errorHandlerWrapper((req, res) => deleteController().handle(req, res))
   );
   router.get(
     "/:id",
     errorHandlerWrapper((req, res) =>
-      getComentariosByVideoIdController().listar(req, res)
+      getComentariosByVideoIdController().handle(req, res)
     )
   );
   router.patch("/:id",
-    errorHandlerWrapper((req, res) => updateController().atualizar(req, res))
+    errorHandlerWrapper((req, res) => updateController().handle(req, res))
   );
 
   return router;

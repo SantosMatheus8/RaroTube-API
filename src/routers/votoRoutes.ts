@@ -16,12 +16,14 @@ const deleteController = (): DeleteVotoController => {
 };
 
 const createRouter = () => {
-  router.use(middlewareAutenticacao)
-  router.post("",
-    errorHandlerWrapper((req, res) => createController().criar(req, res))
+  router.use(middlewareAutenticacao);
+  router.post(
+    "",
+    errorHandlerWrapper((req, res) => createController().handle(req, res))
   );
-  router.delete("",
-    errorHandlerWrapper((req, res) => deleteController().remover(req, res))
+  router.delete(
+    "",
+    errorHandlerWrapper((req, res) => deleteController().handle(req, res))
   );
 
   return router;

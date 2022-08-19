@@ -9,7 +9,7 @@ export class CreateProfessorTurmaController {
     private createProfessorTurmaService: ICreateProfessorTurmaService
   ) {}
 
-  async criar(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     const { professorId, turmaId } = req.body;
 
     const favorito = await this.createProfessorTurmaService.execute({

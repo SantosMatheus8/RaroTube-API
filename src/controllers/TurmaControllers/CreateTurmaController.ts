@@ -9,8 +9,8 @@ export class CreateTurmaController {
     private createTurmaService: ICreateTurmaService
   ) {}
 
-  async criar(request: Request, response: Response) {
-    const { nome, descricao, logoDoCurso } = request.body;
+  async handle(req: Request, res: Response) {
+    const { nome, descricao, logoDoCurso } = req.body;
 
     const turma = await this.createTurmaService.execute({
       nome,
@@ -18,6 +18,6 @@ export class CreateTurmaController {
       logoDoCurso,
     });
 
-    response.status(201).send(turma);
+    res.status(201).send(turma);
   }
 }

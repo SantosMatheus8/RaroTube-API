@@ -32,13 +32,13 @@ const crateRouter = () => {
   router.post(
     "/signup/aluno",
     errorHandlerWrapper((req, res) =>
-      cadastrarAlunoController().cadastrar(req, res)
+      cadastrarAlunoController().handle(req, res)
     )
   );
 
   router.post(
     "/login",
-    errorHandlerWrapper((req, res) => loginController().autenticar(req, res))
+    errorHandlerWrapper((req, res) => loginController().handle(req, res))
   );
   // rotas que precisam de autenticação
   router.use(middlewareAutenticacao);
@@ -46,14 +46,14 @@ const crateRouter = () => {
     "/signup/professor",
     middlewareAutorizacaoAdmin,
     errorHandlerWrapper((req, res) =>
-      cadastrarProfessorController().cadastrar(req, res)
+      cadastrarProfessorController().handle(req, res)
     )
   );
   router.post(
     "/signup/admin",
     middlewareAutorizacaoAdmin,
     errorHandlerWrapper((req, res) =>
-      cadastrarAdminController().cadastrar(req, res)
+      cadastrarAdminController().handle(req, res)
     )
   );
 

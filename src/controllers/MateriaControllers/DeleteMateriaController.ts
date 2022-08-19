@@ -9,7 +9,7 @@ export class DeleteMateriaController {
     private deleteMateriaService: IDeleteMateriaService
   ) {}
 
-  async remover(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     await this.deleteMateriaService.execute(req.params.id);
 
     res.status(204).send();

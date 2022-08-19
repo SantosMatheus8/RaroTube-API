@@ -9,7 +9,7 @@ export class CreateMateriaController {
     private createMateriaService: ICreateMateriaService
   ) {}
 
-  async criar(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     const { videoId, nome } = req.body;
 
     const materia = await this.createMateriaService.execute({ videoId, nome });

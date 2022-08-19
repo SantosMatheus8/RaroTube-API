@@ -9,10 +9,9 @@ export class UpdateVideoController {
     private updateVideoService: IUpdateVideoService
   ) {}
 
-  async atualizar(request: Request, response: Response) {
-    const videoId = request.params.id;
-    const { turmaId, nome, descricao, arquivoDoVideo, imagemBanner } =
-      request.body;
+  async handle(req: Request, res: Response) {
+    const videoId = req.params.id;
+    const { turmaId, nome, descricao, arquivoDoVideo, imagemBanner } = req.body;
 
     const video = await this.updateVideoService.execute(videoId, {
       turmaId,
@@ -22,6 +21,6 @@ export class UpdateVideoController {
       imagemBanner,
     });
 
-    response.send(video);
+    res.send(video);
   }
 }

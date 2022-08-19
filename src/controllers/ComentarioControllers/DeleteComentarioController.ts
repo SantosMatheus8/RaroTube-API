@@ -9,7 +9,7 @@ export class DeleteComentarioController {
     private deleteComentarioService: IDeleteVideoService
   ) {}
 
-  async remover(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     await this.deleteComentarioService.execute(req.params.id);
 
     res.status(204).send();

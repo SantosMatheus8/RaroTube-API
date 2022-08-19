@@ -10,7 +10,7 @@ export class GetVideosPublicosController {
     private getVideosPublicosService: IGetVideosPublicosService
   ) {}
 
-  async listarVideosPublicos(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     const query = this.constroiQueryVideo(req);
 
     const videos = await this.getVideosPublicosService.execute(query);

@@ -9,7 +9,7 @@ export class CreateVideoController {
     private createVideoService: ICreateVideoService
   ) {}
 
-  async criar(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     const { turmaId, nome, descricao, arquivoDoVideo, imagemBanner } = req.body;
 
     const video = await this.createVideoService.execute({

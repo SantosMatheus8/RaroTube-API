@@ -2,11 +2,10 @@ import { DownloadController } from "../controllers/DownloadControllers/DownloadC
 import { Router } from "express";
 import { errorHandlerWrapper } from "../middlewares/errorHandlers";
 
-
 const router = Router();
 
 const createRouter = () => {
-  router.get("", errorHandlerWrapper(new DownloadController().download));
+  router.get("", errorHandlerWrapper(new DownloadController().handle));
 
   return router;
 };

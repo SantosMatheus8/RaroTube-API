@@ -33,13 +33,12 @@ const updateSenhaController = (): UpdateSenhaUsuarioController => {
 
 const createRouter = () => {
   router.use(middlewareAutenticacao);
-  router.get("", (req, res) => listController().listar(req, res));
-  router.get("/:id", (req, res) => getController().get(req, res));
-  router.put("/:id", (req, res) => updateController().atualizar(req, res));
-  router.patch("", (req, res) => updateSenhaController().atualizar(req, res));
-  router.delete("/:id",
-    middlewareAutorizacaoAdmin,
-    (req, res) => deleteController().remover(req, res)
+  router.get("", (req, res) => listController().handle(req, res));
+  router.get("/:id", (req, res) => getController().handle(req, res));
+  router.put("/:id", (req, res) => updateController().handle(req, res));
+  router.patch("", (req, res) => updateSenhaController().handle(req, res));
+  router.delete("/:id", middlewareAutorizacaoAdmin, (req, res) =>
+    deleteController().handle(req, res)
   );
   return router;
 };

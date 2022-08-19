@@ -9,7 +9,7 @@ export class GetAllMateriasController {
     private getAllMateriasService: IGetAllMateriasService
   ) {}
 
-  async listar(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     const videos = await this.getAllMateriasService.execute();
 
     res.send(videos);

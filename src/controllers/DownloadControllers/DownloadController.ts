@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 
 export class DownloadController {
-  async download(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     const { caminho } = req.body;
 
     res.setHeader("Content-disposition", `attachment; filename=${caminho}`);

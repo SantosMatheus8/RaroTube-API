@@ -9,8 +9,9 @@ export class CreateFavoritosController {
     private createFavoritosService: ICreateFavoritosService
   ) {}
 
-  async criar(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     const { videoId, alunoId } = req.body;
+
     const favorito = await this.createFavoritosService.execute({
       videoId,
       alunoId,

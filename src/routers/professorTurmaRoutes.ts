@@ -28,17 +28,21 @@ const getProfessorTurmaByProfessorIdController =
   };
 
 const createRouter = () => {
-  router.use(middlewareAutenticacao)
-  router.use(middlewareAutorizacaoAdmin)
+  router.use(middlewareAutenticacao);
+  router.use(middlewareAutorizacaoAdmin);
   router.post(
     "",
-    errorHandlerWrapper((req, res) => createController().criar(req, res))
+    errorHandlerWrapper((req, res) => createController().handle(req, res))
   );
-  router.delete("",
-    errorHandlerWrapper((req, res) => deleteController().remover(req, res))
+  router.delete(
+    "",
+    errorHandlerWrapper((req, res) => deleteController().handle(req, res))
   );
-  router.get("/:professorId",
-    errorHandlerWrapper((req, res) => getProfessorTurmaByProfessorIdController().listar(req, res))
+  router.get(
+    "/:professorId",
+    errorHandlerWrapper((req, res) =>
+      getProfessorTurmaByProfessorIdController().handle(req, res)
+    )
   );
 
   return router;

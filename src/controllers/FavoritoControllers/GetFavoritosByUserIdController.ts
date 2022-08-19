@@ -10,7 +10,7 @@ export class GetFavoritosByUserIdController {
     private getFavoritosByUserIdService: IGetFavoritosByUserIdService
   ) {}
 
-  async listar(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     const query = this.constroiQueryFavorito(req);
 
     const favoritos = await this.getFavoritosByUserIdService.execute(query);

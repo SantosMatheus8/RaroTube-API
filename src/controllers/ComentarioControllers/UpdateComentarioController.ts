@@ -9,7 +9,7 @@ export class UpdateComentarioController {
     private updateComentarioService: IUpdateComentarioService
   ) {}
 
-  async atualizar(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     const comentarioId = req.params.id;
     const { conteudo } = req.body;
     const comentario = await this.updateComentarioService.execute(
