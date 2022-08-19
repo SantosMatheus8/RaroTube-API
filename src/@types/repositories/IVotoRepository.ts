@@ -1,8 +1,7 @@
 import { CreateVotoDTO } from "../../@types/dto/VotoDTO";
 import { UsuarioVotaComentario } from "../../models/usuario_vota_comentario";
-import { Repository } from "typeorm";
 
-export interface IVotoRepository extends Repository<UsuarioVotaComentario> {
+export interface IVotoRepository {
   criar({
     comentarioId,
     usuarioId,

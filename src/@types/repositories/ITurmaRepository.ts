@@ -1,8 +1,7 @@
 import { TurmaDTO } from "../dto/TurmaDTO";
 import { Turma } from "../../models/turma";
-import { Repository } from "typeorm";
 
-export interface ITurmaRepository extends Repository<Turma> {
+export interface ITurmaRepository {
   criar({ nome, descricao, logoDoCurso }: TurmaDTO): Promise<Turma>;
   atualizar(id, { nome, descricao, logoDoCurso }: TurmaDTO): Promise<Turma>;
   buscar(id: string): Promise<Turma>;

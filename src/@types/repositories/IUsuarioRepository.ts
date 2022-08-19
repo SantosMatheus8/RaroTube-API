@@ -1,8 +1,7 @@
 import { UpdateUsuarioDTO, UsuarioDTO } from "../dto/UsuarioDTO";
 import { Usuario } from "../../models/usuario";
-import { Repository } from "typeorm";
 
-export interface IUsuarioRepository extends Repository<Usuario> {
+export interface IUsuarioRepository {
   cadastrar({ email, nome, fotoPerfil, senha }: UsuarioDTO): Promise<Usuario>;
   atualizar(
     id,

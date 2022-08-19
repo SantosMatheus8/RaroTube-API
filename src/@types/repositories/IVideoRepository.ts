@@ -6,9 +6,8 @@ import {
   VideoDTO,
 } from "../dto/VideoDTO";
 import { Video } from "../../models/video";
-import { Repository } from "typeorm";
 
-export interface IVideoRepository extends Repository<Video> {
+export interface IVideoRepository {
   criar({
     turma,
     nome,

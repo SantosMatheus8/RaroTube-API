@@ -1,6 +1,6 @@
 import { IVideoRepository } from "../@types/repositories/IVideoRepository";
 import { Video } from "../models/video";
-import { EntityRepository, Repository, ILike } from "typeorm";
+import { EntityRepository, Repository, ILike, getRepository } from "typeorm";
 import {
   CreateVideoDTO,
   QueryVideos,
@@ -10,10 +10,13 @@ import {
 } from "../@types/dto/VideoDTO";
 
 @EntityRepository(Video)
-export class VideoRepository
-  extends Repository<Video>
-  implements IVideoRepository
-{
+export class VideoRepository implements IVideoRepository {
+  private repository: Repository<Video>;
+
+  constructor() {
+    this.repository = getRepository(Video);
+  }
+
   async atualizar(
     id: string,
     {
@@ -30,7 +33,7 @@ export class VideoRepository
     video.descricao = descricao ?? video.descricao;
     video.arquivoDoVideo = arquivoDoVideo ?? video.arquivoDoVideo;
     video.imagemBanner = imagemBanner ?? video.imagemBanner;
-    return this.save(video);
+    return this.repository.save(video);
   }
 
   async criar({
@@ -40,7 +43,7 @@ export class VideoRepository
     arquivoDoVideo,
     imagemBanner,
   }: CreateVideoDTO): Promise<Video> {
-    const video = await this.save({
+    const video = await this.repository.save({
       turma,
       nome,
       descricao,
@@ -51,7 +54,7 @@ export class VideoRepository
   }
 
   async buscar(id: string): Promise<Video> {
-    const video = await this.findOne({
+    const video = await this.repository.findOne({
       where: { id },
       relations: ["turma"],
     });
@@ -60,13 +63,14 @@ export class VideoRepository
 
   async remover(id: string): Promise<void> {
     const video = await this.buscar(id);
-    await this.remove(video);
+    await this.repository.remove(video);
   }
 
   async listar(query: QueryVideos): Promise<[Video[], number]> {
     const { nome, turma, orderBy, orderDirection, page, per } = query;
 
-    const videos = await this.createQueryBuilder("video")
+    const videos = await this.repository
+      .createQueryBuilder("video")
       .leftJoinAndSelect("video.turma", "turma")
       .where("video.nome LIKE :nome", { nome: `%${nome}%` })
       .andWhere("turma.nome LIKE :turma", { turma: `%${turma}%` })
@@ -82,7 +86,8 @@ export class VideoRepository
     query: QueryVideosPublicos
   ): Promise<[Video[], number]> {
     const { nome, orderBy, orderDirection, page, per } = query;
-    const videos = await this.createQueryBuilder("video")
+    const videos = await this.repository
+      .createQueryBuilder("video")
       .leftJoinAndSelect("video.turma", "turma")
       .where("video.nome LIKE :nome", { nome: `%${nome}%` })
       .andWhere("turma.id IS NULL")
@@ -98,7 +103,7 @@ export class VideoRepository
     query: QueryVideosPorTurma
   ): Promise<[Video[], number]> {
     const { turmaId, nome, orderBy, orderDirection, page, per } = query;
-    const [videos, total] = await this.findAndCount({
+    const [videos, total] = await this.repository.findAndCount({
       where: {
         nome: ILike(`%${nome}%`),
         turma: { id: turmaId },

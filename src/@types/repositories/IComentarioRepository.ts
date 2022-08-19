@@ -1,9 +1,8 @@
 import { CreateComentarioDTO } from "../../@types/dto/ComentarioDTO";
 import { Comentario } from "../../models/comentario";
-import { Repository } from "typeorm";
 import { Video } from "../../models/video";
 
-export interface IComentarioRepository extends Repository<Comentario> {
+export interface IComentarioRepository {
   criar({ video, usuario, conteudo }: CreateComentarioDTO): Promise<Comentario>;
   remover(id: string): Promise<void>;
   buscar(id: string): Promise<Comentario>;

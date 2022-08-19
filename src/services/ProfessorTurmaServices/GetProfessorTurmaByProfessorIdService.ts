@@ -1,12 +1,12 @@
 import { Inject, Service } from "typedi";
 import { IGetProfessorTurmaByProfessorIdService } from "../../@types/services/IProfessorTurmaService";
 import { IProfessorTurmaRepository } from "../../@types/repositories/IProfessorTurmaRepository";
-import { IAlunoRepository } from "../../@types/repositories/IAlunoRepository";
 import { NotFoundError } from "../../@types/errors/NotFoundError";
 import {
   QueryProfessorTurmas,
   RetornoListaProfessorTurmas,
 } from "../../@types/dto/ProfessorTurmaDTO";
+import { IProfessorRepository } from "../../@types/repositories/IProfessorRepository";
 
 @Service("GetProfessorTurmaByProfessorIdService")
 export class GetProfessorTurmaByProfessorIdService
@@ -16,7 +16,7 @@ export class GetProfessorTurmaByProfessorIdService
     @Inject("ProfessorTurmaRepository")
     private favoritoRespository: IProfessorTurmaRepository,
     @Inject("ProfessorRepository")
-    private professorRespository: IAlunoRepository
+    private professorRespository: IProfessorRepository
   ) {}
 
   async listar(
@@ -24,9 +24,9 @@ export class GetProfessorTurmaByProfessorIdService
   ): Promise<RetornoListaProfessorTurmas> {
     const { professorId } = queryProfessorTurma;
 
-    const professor = await this.professorRespository.findOne({
-      where: { id: professorId },
-    });
+    const professor = await this.professorRespository.buscarPorUsuarioId(
+      professorId
+    );
 
     if (!professor) {
       throw new NotFoundError("O professor informado não existe");

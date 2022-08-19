@@ -2,10 +2,9 @@ import {
   CreateProfessorTurmaDTO,
   QueryProfessorTurmas,
 } from "../dto/ProfessorTurmaDTO";
-import { Repository } from "typeorm";
 import { ProfessorTurma } from "../../models/professor_turma";
 
-export interface IProfessorTurmaRepository extends Repository<ProfessorTurma> {
+export interface IProfessorTurmaRepository {
   criar({
     turmaId,
     professorId,

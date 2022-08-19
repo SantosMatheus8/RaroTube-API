@@ -1,5 +1,5 @@
 import { IProfessorTurmaRepository } from "../@types/repositories/IProfessorTurmaRepository";
-import { EntityRepository, Repository, ILike } from "typeorm";
+import { EntityRepository, Repository, ILike, getRepository } from "typeorm";
 import { ProfessorTurma } from "../models/professor_turma";
 import {
   CreateProfessorTurmaDTO,
@@ -7,15 +7,18 @@ import {
 } from "../@types/dto/ProfessorTurmaDTO";
 
 @EntityRepository(ProfessorTurma)
-export class ProfessorTurmaRepository
-  extends Repository<ProfessorTurma>
-  implements IProfessorTurmaRepository
-{
+export class ProfessorTurmaRepository implements IProfessorTurmaRepository {
+  private repository: Repository<ProfessorTurma>;
+
+  constructor() {
+    this.repository = getRepository(ProfessorTurma);
+  }
+
   async criar({
     professorId,
     turmaId,
   }: CreateProfessorTurmaDTO): Promise<ProfessorTurma> {
-    const ProfessorTurma = await this.save({
+    const ProfessorTurma = await this.repository.save({
       professorId,
       turmaId,
     });
@@ -24,7 +27,7 @@ export class ProfessorTurmaRepository
   }
 
   async remover(ProfessorTurma: ProfessorTurma): Promise<void> {
-    await this.remove(ProfessorTurma);
+    await this.repository.remove(ProfessorTurma);
   }
 
   async listar(
@@ -33,7 +36,7 @@ export class ProfessorTurmaRepository
     const { professorId, nomeTurma, orderBy, orderDirection, page, per } =
       query;
 
-    const [professorTurmas, total] = await this.findAndCount({
+    const [professorTurmas, total] = await this.repository.findAndCount({
       relations: ["professor", "turma"],
       where: {
         professorId,
@@ -53,7 +56,7 @@ export class ProfessorTurmaRepository
     professorId,
     turmaId,
   }: CreateProfessorTurmaDTO): Promise<ProfessorTurma> {
-    const professorTurma = await this.findOne({
+    const professorTurma = await this.repository.findOne({
       where: { professorId, turmaId },
     });
 

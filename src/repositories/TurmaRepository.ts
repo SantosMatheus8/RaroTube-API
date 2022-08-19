@@ -1,15 +1,18 @@
 import { ITurmaRepository } from "../@types/repositories/ITurmaRepository";
 import { Turma } from "../models/turma";
-import { EntityRepository, Repository } from "typeorm";
+import { EntityRepository, getRepository, Repository } from "typeorm";
 import { TurmaDTO } from "../@types/dto/TurmaDTO";
 
 @EntityRepository(Turma)
-export class TurmaRepository
-  extends Repository<Turma>
-  implements ITurmaRepository
-{
+export class TurmaRepository implements ITurmaRepository {
+  private repository: Repository<Turma>;
+
+  constructor() {
+    this.repository = getRepository(Turma);
+  }
+
   async criar({ nome, descricao, logoDoCurso }: TurmaDTO): Promise<Turma> {
-    return this.save({
+    return this.repository.save({
       nome,
       descricao,
       logoDoCurso,
@@ -17,11 +20,11 @@ export class TurmaRepository
   }
 
   async remover(turma: Turma): Promise<void> {
-    await this.softDelete(turma);
+    await this.repository.softDelete(turma);
   }
 
   async buscar(id: string): Promise<Turma> {
-    return await this.findOne({ where: { id } });
+    return await this.repository.findOne({ where: { id } });
   }
 
   async atualizar(
@@ -32,10 +35,10 @@ export class TurmaRepository
     turma.nome = nome ?? turma.nome;
     turma.descricao = descricao ?? turma.descricao;
     turma.logoDoCurso = logoDoCurso ?? turma.logoDoCurso;
-    return this.save(turma);
+    return this.repository.save(turma);
   }
 
   async listar(): Promise<Turma[]> {
-    return await this.find();
+    return await this.repository.find();
   }
 }
