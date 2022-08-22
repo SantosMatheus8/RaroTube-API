@@ -51,7 +51,7 @@ describe("CreateAdminService", () => {
     const emailJaCadastrado = await cadastrarAdminService
       .execute({
         email: "email@email.com",
-        nome: "Felipe",
+        nome: "Matheus",
         fotoPerfil: "./upload/42380523yhr",
         senha: "123456",
       })

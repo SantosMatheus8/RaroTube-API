@@ -66,7 +66,7 @@ describe("LoginService", () => {
 
     const login = await loginService.execute(professor.email, "123456");
 
-    expect(login.tipoUsuario).toBe("professor");
+    expect(login).toHaveProperty("token");
   });
 
   it("Um aluno deve ser logado", async () => {
@@ -86,7 +86,7 @@ describe("LoginService", () => {
 
     const login = await loginService.execute(aluno.email, "123456");
 
-    expect(login.tipoUsuario).toBe("aluno");
+    expect(login).toHaveProperty("token");
   });
 
   it("Um admin deve ser logado", async () => {
@@ -99,7 +99,7 @@ describe("LoginService", () => {
 
     const login = await loginService.execute(admin.email, "123456");
 
-    expect(login.tipoUsuario).toBe("admin");
+    expect(login).toHaveProperty("token");
   });
 
   it("Deve retornar o erro de usuario ou senha invalidos", async () => {

@@ -14,7 +14,7 @@ export class GetProfessorTurmaByProfessorIdService
 {
   constructor(
     @Inject("ProfessorTurmaRepository")
-    private favoritoRespository: IProfessorTurmaRepository,
+    private professorTurmaRespository: IProfessorTurmaRepository,
     @Inject("ProfessorRepository")
     private professorRespository: IProfessorRepository
   ) {}
@@ -34,9 +34,10 @@ export class GetProfessorTurmaByProfessorIdService
 
     const query = this.constroiQueryPadrao(queryProfessorTurma);
 
-    const [favoritos, total] = await this.favoritoRespository.listar(query);
+    const [professoresTurmas, total] =
+      await this.professorTurmaRespository.listar(query);
 
-    const turmas = favoritos.map((favorito) => favorito.turma);
+    const turmas = professoresTurmas.map((favorito) => favorito.turma);
 
     return {
       data: turmas,
