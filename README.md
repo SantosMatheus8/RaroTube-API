@@ -7,16 +7,16 @@ Projeto final da turma de nodejs da Raro Academy
 Clonar o repositório :
 
 ```bash
-git clone https://gitlab.com/SantosMatheus8/trabalho-final-grupo02.git
+git clone https://github.com/SantosMatheus8/RaroTube-API
 ```
 
 Trocar para o arquivo do repositório :
 
 ```bash
-cd trabalho-final-grupo02
+cd RaroTube-API
 ```
 
-Instalas as dependencias :
+Instalar as dependencias :
 
 ```bash
 npm install
